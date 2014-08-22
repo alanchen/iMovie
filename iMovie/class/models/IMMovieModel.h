@@ -21,13 +21,13 @@
 
 @property (nonatomic)NSTimeInterval showtime;
 
-@property (nonatomic)NSInteger gc;
-@property (nonatomic)NSInteger bc;
-@property (nonatomic)NSInteger nc;
+@property (nonatomic)int gc;
+@property (nonatomic)int bc;
+@property (nonatomic)int nc;
 
-@property (nonatomic)NSInteger imdb;
-@property (nonatomic)NSInteger tomato;
-@property (nonatomic)NSInteger tp_rank;
+@property (nonatomic)int imdb;
+@property (nonatomic)int tomato;
+@property (nonatomic)int tp_rank;
 
 +(NSArray *)parseListData:(id)data;
 

@@ -13,7 +13,6 @@
 @property (nonatomic,strong)UILabel *titleLabel;
 @property (nonatomic,strong)UILabel *messageLabel;
 
-
 +(float)cellHeightWithDetail:(NSString *)text;
 
 @end

@@ -151,7 +151,9 @@
         IMPttTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IMPttTableViewCell" forIndexPath:indexPath];
         
         IMMovieArticleModel *article = [self.articles objectAtIndex:indexPath.row];
-        cell.textLabel.text =article.key_title;
+        cell.titleLabel.text =article.key_title;
+        [cell setPush:article.key_push];
+        cell.idLabel.text = article.key_author;
 
         return cell;
     }
@@ -194,7 +196,8 @@
         }
     }
     else if(self.segControl.selectedSegmentIndex == 1){
-        height = 50;
+        IMMovieArticleModel *article = [self.articles objectAtIndex:indexPath.row];
+        height = [IMPttTableViewCell cellHeightWithDetail:article.key_title];
     }
     else if(self.segControl.selectedSegmentIndex == 2){
         height = 200;

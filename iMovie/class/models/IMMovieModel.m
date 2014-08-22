@@ -57,7 +57,7 @@
     NSString *badNumber = [NSString stringWithFormat:@"%d",self.bc];
     
     NSString *goodText = [NSString stringWithFormat:@"%@好雷",goodNumber];
-    NSString *normalText  = [NSString stringWithFormat:@"%@好雷",normalNumber];
+    NSString *normalText  = [NSString stringWithFormat:@"%@普雷",normalNumber];
     NSString *badText  = [NSString stringWithFormat:@"%@負雷",badNumber];
     
     NSString *text = [NSString stringWithFormat:@"鄉民指數:%@/%@/%@",goodText,normalText,badText];

@@ -10,4 +10,12 @@
 
 @interface IMPttTableViewCell : UITableViewCell
 
+@property (nonatomic,strong)UILabel *pushLabel;
+@property (nonatomic,strong)UILabel *titleLabel;
+@property (nonatomic,strong)UILabel *idLabel;
+
++(float)cellHeightWithDetail:(NSString *)text;
+
+-(void)setPush:(int)push;
+
 @end

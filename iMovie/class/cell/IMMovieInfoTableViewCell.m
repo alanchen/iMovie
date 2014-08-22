@@ -8,7 +8,6 @@
 
 #import "IMMovieInfoTableViewCell.h"
 
-
 #define kArticleTitleHeight 20
 #define KPadding  10
 #define kArticleDetailFont  IMFont(16)
