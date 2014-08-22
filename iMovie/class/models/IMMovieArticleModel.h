@@ -19,6 +19,8 @@
 @property (nonatomic)NSTimeInterval key_ts;
 @property (nonatomic)BOOL key_ismarked;
 
+-(NSString *)url;
+
 +(NSArray *)parseListData:(id)data;
 
 -(void)printSelf;

@@ -16,6 +16,11 @@
 		E72716D419A6FAB300BAC5B2 /* ACModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716D219A6FAB300BAC5B2 /* ACModelParser.m */; };
 		E762034719A7198D0025EC00 /* IMMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E762034619A7198D0025EC00 /* IMMainTableViewCell.m */; };
 		E762034D19A741210025EC00 /* NSDate+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = E762034C19A741210025EC00 /* NSDate+Format.m */; };
+		E762035019A74C110025EC00 /* IMFullImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E762034F19A74C110025EC00 /* IMFullImageTableViewCell.m */; };
+		E762035319A74C490025EC00 /* IMMovieInfoTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E762035219A74C490025EC00 /* IMMovieInfoTableViewCell.m */; };
+		E762035619A74C640025EC00 /* IMPttTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E762035519A74C640025EC00 /* IMPttTableViewCell.m */; };
+		E762035919A74C9B0025EC00 /* IMMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E762035819A74C9B0025EC00 /* IMMovieDetailViewController.m */; };
+		E762035C19A74CBF0025EC00 /* IMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E762035B19A74CBF0025EC00 /* IMWebViewController.m */; };
 		E7FFCB1A19A5FCE000B834BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1919A5FCE000B834BF /* Foundation.framework */; };
 		E7FFCB1C19A5FCE000B834BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */; };
 		E7FFCB1E19A5FCE000B834BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1D19A5FCE000B834BF /* UIKit.framework */; };
@@ -64,6 +69,16 @@
 		E762034819A73EE00025EC00 /* IMDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDefine.h; sourceTree = "<group>"; };
 		E762034B19A741210025EC00 /* NSDate+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Format.h"; sourceTree = "<group>"; };
 		E762034C19A741210025EC00 /* NSDate+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Format.m"; sourceTree = "<group>"; };
+		E762034E19A74C110025EC00 /* IMFullImageTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMFullImageTableViewCell.h; sourceTree = "<group>"; };
+		E762034F19A74C110025EC00 /* IMFullImageTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMFullImageTableViewCell.m; sourceTree = "<group>"; };
+		E762035119A74C490025EC00 /* IMMovieInfoTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMovieInfoTableViewCell.h; sourceTree = "<group>"; };
+		E762035219A74C490025EC00 /* IMMovieInfoTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMovieInfoTableViewCell.m; sourceTree = "<group>"; };
+		E762035419A74C640025EC00 /* IMPttTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMPttTableViewCell.h; sourceTree = "<group>"; };
+		E762035519A74C640025EC00 /* IMPttTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMPttTableViewCell.m; sourceTree = "<group>"; };
+		E762035719A74C9B0025EC00 /* IMMovieDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMovieDetailViewController.h; sourceTree = "<group>"; };
+		E762035819A74C9B0025EC00 /* IMMovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMovieDetailViewController.m; sourceTree = "<group>"; };
+		E762035A19A74CBF0025EC00 /* IMWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMWebViewController.h; sourceTree = "<group>"; };
+		E762035B19A74CBF0025EC00 /* IMWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMWebViewController.m; sourceTree = "<group>"; };
 		E7FFCB1619A5FCE000B834BF /* iMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FFCB1919A5FCE000B834BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -126,6 +141,10 @@
 			children = (
 				E72716B219A6E73600BAC5B2 /* IMMainViewController.h */,
 				E72716B319A6E73600BAC5B2 /* IMMainViewController.m */,
+				E762035719A74C9B0025EC00 /* IMMovieDetailViewController.h */,
+				E762035819A74C9B0025EC00 /* IMMovieDetailViewController.m */,
+				E762035A19A74CBF0025EC00 /* IMWebViewController.h */,
+				E762035B19A74CBF0025EC00 /* IMWebViewController.m */,
 			);
 			path = viewcontrollers;
 			sourceTree = "<group>";
@@ -186,6 +205,12 @@
 			children = (
 				E762034519A7198D0025EC00 /* IMMainTableViewCell.h */,
 				E762034619A7198D0025EC00 /* IMMainTableViewCell.m */,
+				E762034E19A74C110025EC00 /* IMFullImageTableViewCell.h */,
+				E762034F19A74C110025EC00 /* IMFullImageTableViewCell.m */,
+				E762035119A74C490025EC00 /* IMMovieInfoTableViewCell.h */,
+				E762035219A74C490025EC00 /* IMMovieInfoTableViewCell.m */,
+				E762035419A74C640025EC00 /* IMPttTableViewCell.h */,
+				E762035519A74C640025EC00 /* IMPttTableViewCell.m */,
 			);
 			path = cell;
 			sourceTree = "<group>";
@@ -397,12 +422,17 @@
 			files = (
 				E7FFCB2A19A5FCE000B834BF /* IMAppDelegate.m in Sources */,
 				E72716D119A6F91300BAC5B2 /* IMMovieDetailModel.m in Sources */,
+				E762035619A74C640025EC00 /* IMPttTableViewCell.m in Sources */,
+				E762035C19A74CBF0025EC00 /* IMWebViewController.m in Sources */,
 				E72716BE19A6E9BA00BAC5B2 /* IMMovieModel.m in Sources */,
+				E762035919A74C9B0025EC00 /* IMMovieDetailViewController.m in Sources */,
 				E72716C119A6E9D400BAC5B2 /* IMAPIService.m in Sources */,
 				E72716D419A6FAB300BAC5B2 /* ACModelParser.m in Sources */,
 				E72716CE19A6F65500BAC5B2 /* IMMovieArticleModel.m in Sources */,
 				E72716B819A6E8C200BAC5B2 /* UIView+Position.m in Sources */,
+				E762035319A74C490025EC00 /* IMMovieInfoTableViewCell.m in Sources */,
 				E7FFCB2619A5FCE000B834BF /* main.m in Sources */,
+				E762035019A74C110025EC00 /* IMFullImageTableViewCell.m in Sources */,
 				E762034719A7198D0025EC00 /* IMMainTableViewCell.m in Sources */,
 				E762034D19A741210025EC00 /* NSDate+Format.m in Sources */,
 				E72716B419A6E73600BAC5B2 /* IMMainViewController.m in Sources */,

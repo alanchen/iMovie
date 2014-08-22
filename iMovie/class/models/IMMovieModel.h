@@ -37,4 +37,7 @@
 -(NSString *)imdbText;
 -(NSString *)dateText;
 
+-(NSMutableAttributedString *)commentAttributedText;
+
+
 @end

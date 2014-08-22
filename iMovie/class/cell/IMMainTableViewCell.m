@@ -28,9 +28,12 @@
         [self.titleLabel setFont:IMFont(20)];
         
         self.descriptionLabel = [self addLabel];
-        [self.descriptionLabel setFont:IMFont(11)];
+        [self.descriptionLabel setFont:IMFont(12)];
         self.descriptionLabel.numberOfLines = 0;
-
+        
+        self.commentLabel = [self addLabel];
+        self.commentLabel.numberOfLines = 0;
+        
         self.imdbLabel = [self addLabel];
         [self.imdbLabel setFont:IMFont(12)];
 
@@ -99,7 +102,11 @@
     self.imdbLabel.size = CGSizeMake(100, 15);
     self.imdbLabel.left = self.descriptionLabel.left;
     self.imdbLabel.bottom = self.tomatoLabel.top;
-
+    
+    self.commentLabel.width = self.descriptionLabel.width;
+    self.commentLabel.height = self.descriptionLabel.bottom - self.imdbLabel.top;
+    self.commentLabel.left = self.descriptionLabel.left;
+    self.commentLabel.top = self.descriptionLabel.bottom;
 }
 
 @end

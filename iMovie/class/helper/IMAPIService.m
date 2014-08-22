@@ -101,6 +101,7 @@
     
     AFHTTPRequestOperation *op =
     [_manager GET:@"ptt/article" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+
         if(success)
             success(operation, [IMMovieArticleModel parseListData:responseObject]);
     } failure:^(AFHTTPRequestOperation *operation, NSError *error) {

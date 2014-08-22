@@ -10,6 +10,10 @@
 
 @implementation IMMovieArticleModel
 
+-(NSString *)url
+{
+    return  [NSString stringWithFormat:@"https://www.ptt.cc/bbs/movie/%@.html",self._id];
+}
 
 +(NSArray *)parseListData:(id)data
 {

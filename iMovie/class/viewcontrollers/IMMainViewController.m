@@ -10,6 +10,7 @@
 #import "IMAPIService.h"
 #import "IMMainTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
+#import "IMMovieDetailViewController.h"
 
 @interface IMMainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -153,6 +154,7 @@
     [cell.imdbLabel setText:movieObj.imdbText];
     [cell.tomatoLabel setText:movieObj.tomatoText];
     [cell.dateLabel setText:movieObj.dateText];
+    [cell.commentLabel setAttributedText:movieObj.commentAttributedText];
     
     return cell;
 }
@@ -160,6 +162,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
     return 210;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    IMMovieModel *movieObj = [self.tableDataSource objectAtIndex:indexPath.row];
+    
+    IMMovieDetailViewController *vc =[[IMMovieDetailViewController alloc] initWithMovie:movieObj];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 #pragma  mark - API
@@ -176,34 +186,6 @@
                                                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                     
                                                 }];
-}
-
--(void)test
-{
-    [[IMAPIService sharedInstance] apiMovieListWithType:IMMovieListTypeInTheater success:^(AFHTTPRequestOperation *operation, id movieList) {
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-    
-    [[IMAPIService sharedInstance] apiGetMovieArticleList:IMMovieArticleTypeGood title:@"猩球崛起" success:^(AFHTTPRequestOperation *operation, id articleList) {
-        
-        //        for(IMMovieArticleModel *article in articleList)
-        //            [article printSelf];
-        
-        
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-    
-    [[IMAPIService sharedInstance] apiMovieDetailWithMovieId:@"5202" success:^(AFHTTPRequestOperation *operation, IMMovieDetailModel *movie) {
-        //        [movie printSelf];
-        //        NSLog(@"%@",movie.key_photos);
-    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-        
-    }];
-
 }
 
 @end

@@ -8,4 +8,5 @@
 
 
 #define IMFont(size) [UIFont systemFontOfSize:size]
+#define IMBoldFont(size) [UIFont boldSystemFontOfSize:size]
 

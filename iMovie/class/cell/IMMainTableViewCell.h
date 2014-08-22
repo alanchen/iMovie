@@ -14,6 +14,7 @@
 @property (nonatomic,strong)UILabel *titleLabel;
 @property (nonatomic,strong)UIImageView *coverImageView;
 @property (nonatomic,strong)UILabel *descriptionLabel;
+@property (nonatomic,strong)UILabel *commentLabel;
 
 @property (nonatomic,strong)UILabel *imdbLabel;
 @property (nonatomic,strong)UILabel *tomatoLabel;
