@@ -16,4 +16,5 @@
 
     #import "UIView+Position.h"
     #import "IMEnumType.h"
+    #import "IMDefine.h"
 #endif

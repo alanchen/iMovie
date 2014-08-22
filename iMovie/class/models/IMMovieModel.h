@@ -17,8 +17,9 @@
 @property (nonatomic,strong)NSString *ori_name;
 @property (nonatomic,strong)NSString *thumbnail_small;
 @property (nonatomic,strong)NSString *thumbnail_big;
-@property (nonatomic,strong)NSString *showtime;
 @property (nonatomic,strong)NSString *description;
+
+@property (nonatomic)NSTimeInterval showtime;
 
 @property (nonatomic)NSInteger gc;
 @property (nonatomic)NSInteger bc;
@@ -31,5 +32,9 @@
 +(NSArray *)parseListData:(id)data;
 
 -(void)printSelf;
+
+-(NSString *)tomatoText;
+-(NSString *)imdbText;
+-(NSString *)dateText;
 
 @end

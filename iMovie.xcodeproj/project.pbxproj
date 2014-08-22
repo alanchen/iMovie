@@ -14,6 +14,8 @@
 		E72716CE19A6F65500BAC5B2 /* IMMovieArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716CD19A6F65500BAC5B2 /* IMMovieArticleModel.m */; };
 		E72716D119A6F91300BAC5B2 /* IMMovieDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716D019A6F91300BAC5B2 /* IMMovieDetailModel.m */; };
 		E72716D419A6FAB300BAC5B2 /* ACModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716D219A6FAB300BAC5B2 /* ACModelParser.m */; };
+		E762034719A7198D0025EC00 /* IMMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E762034619A7198D0025EC00 /* IMMainTableViewCell.m */; };
+		E762034D19A741210025EC00 /* NSDate+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = E762034C19A741210025EC00 /* NSDate+Format.m */; };
 		E7FFCB1A19A5FCE000B834BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1919A5FCE000B834BF /* Foundation.framework */; };
 		E7FFCB1C19A5FCE000B834BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */; };
 		E7FFCB1E19A5FCE000B834BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1D19A5FCE000B834BF /* UIKit.framework */; };
@@ -57,6 +59,11 @@
 		E72716D019A6F91300BAC5B2 /* IMMovieDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMovieDetailModel.m; sourceTree = "<group>"; };
 		E72716D219A6FAB300BAC5B2 /* ACModelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACModelParser.m; sourceTree = "<group>"; };
 		E72716D319A6FAB300BAC5B2 /* ACModelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACModelParser.h; sourceTree = "<group>"; };
+		E762034519A7198D0025EC00 /* IMMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMainTableViewCell.h; sourceTree = "<group>"; };
+		E762034619A7198D0025EC00 /* IMMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMainTableViewCell.m; sourceTree = "<group>"; };
+		E762034819A73EE00025EC00 /* IMDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDefine.h; sourceTree = "<group>"; };
+		E762034B19A741210025EC00 /* NSDate+Format.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+Format.h"; sourceTree = "<group>"; };
+		E762034C19A741210025EC00 /* NSDate+Format.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+Format.m"; sourceTree = "<group>"; };
 		E7FFCB1619A5FCE000B834BF /* iMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FFCB1919A5FCE000B834BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -103,6 +110,7 @@
 		E72716B019A6E71F00BAC5B2 /* class */ = {
 			isa = PBXGroup;
 			children = (
+				E762034419A7196F0025EC00 /* cell */,
 				E72716C519A6F15F00BAC5B2 /* others */,
 				E72716BA19A6E93400BAC5B2 /* libs */,
 				E72716B919A6E92400BAC5B2 /* helper */,
@@ -127,6 +135,8 @@
 			children = (
 				E72716B619A6E8C200BAC5B2 /* UIView+Position.h */,
 				E72716B719A6E8C200BAC5B2 /* UIView+Position.m */,
+				E762034B19A741210025EC00 /* NSDate+Format.h */,
+				E762034C19A741210025EC00 /* NSDate+Format.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -166,8 +176,18 @@
 			isa = PBXGroup;
 			children = (
 				E72716C619A6F17100BAC5B2 /* IMEnumType.h */,
+				E762034819A73EE00025EC00 /* IMDefine.h */,
 			);
 			path = others;
+			sourceTree = "<group>";
+		};
+		E762034419A7196F0025EC00 /* cell */ = {
+			isa = PBXGroup;
+			children = (
+				E762034519A7198D0025EC00 /* IMMainTableViewCell.h */,
+				E762034619A7198D0025EC00 /* IMMainTableViewCell.m */,
+			);
+			path = cell;
 			sourceTree = "<group>";
 		};
 		E7FFCB0D19A5FCE000B834BF = {
@@ -383,6 +403,8 @@
 				E72716CE19A6F65500BAC5B2 /* IMMovieArticleModel.m in Sources */,
 				E72716B819A6E8C200BAC5B2 /* UIView+Position.m in Sources */,
 				E7FFCB2619A5FCE000B834BF /* main.m in Sources */,
+				E762034719A7198D0025EC00 /* IMMainTableViewCell.m in Sources */,
+				E762034D19A741210025EC00 /* NSDate+Format.m in Sources */,
 				E72716B419A6E73600BAC5B2 /* IMMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
