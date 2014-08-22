@@ -7,12 +7,16 @@
 //
 
 #import "IMAppDelegate.h"
+#import "IMMainViewController.h"
 
 @implementation IMAppDelegate
 
+#pragma  mark - Override
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    // Override point for customization after application launch.
+    [self initWindow];
+    
     return YES;
 }
 							
@@ -42,5 +46,19 @@
 {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
+
+
+#pragma  mark - Init
+
+-(void)initWindow
+{
+    IMMainViewController *rootVC = [[IMMainViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    
+    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+    self.window.rootViewController = navi;
+    [self.window makeKeyAndVisible];
+}
+
 
 @end

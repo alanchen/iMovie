@@ -7,15 +7,19 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E72716B419A6E73600BAC5B2 /* IMMainViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716B319A6E73600BAC5B2 /* IMMainViewController.m */; };
+		E72716B819A6E8C200BAC5B2 /* UIView+Position.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716B719A6E8C200BAC5B2 /* UIView+Position.m */; };
+		E72716BE19A6E9BA00BAC5B2 /* IMMovieModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716BD19A6E9BA00BAC5B2 /* IMMovieModel.m */; };
+		E72716C119A6E9D400BAC5B2 /* IMAPIService.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716C019A6E9D400BAC5B2 /* IMAPIService.m */; };
+		E72716CE19A6F65500BAC5B2 /* IMMovieArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716CD19A6F65500BAC5B2 /* IMMovieArticleModel.m */; };
+		E72716D119A6F91300BAC5B2 /* IMMovieDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716D019A6F91300BAC5B2 /* IMMovieDetailModel.m */; };
+		E72716D419A6FAB300BAC5B2 /* ACModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716D219A6FAB300BAC5B2 /* ACModelParser.m */; };
 		E7FFCB1A19A5FCE000B834BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1919A5FCE000B834BF /* Foundation.framework */; };
 		E7FFCB1C19A5FCE000B834BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */; };
 		E7FFCB1E19A5FCE000B834BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1D19A5FCE000B834BF /* UIKit.framework */; };
 		E7FFCB2419A5FCE000B834BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7FFCB2219A5FCE000B834BF /* InfoPlist.strings */; };
 		E7FFCB2619A5FCE000B834BF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FFCB2519A5FCE000B834BF /* main.m */; };
 		E7FFCB2A19A5FCE000B834BF /* IMAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FFCB2919A5FCE000B834BF /* IMAppDelegate.m */; };
-		E7FFCB2D19A5FCE000B834BF /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FFCB2B19A5FCE000B834BF /* Main_iPhone.storyboard */; };
-		E7FFCB3019A5FCE000B834BF /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E7FFCB2E19A5FCE000B834BF /* Main_iPad.storyboard */; };
-		E7FFCB3319A5FCE000B834BF /* IMViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E7FFCB3219A5FCE000B834BF /* IMViewController.m */; };
 		E7FFCB3519A5FCE000B834BF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = E7FFCB3419A5FCE000B834BF /* Images.xcassets */; };
 		E7FFCB3C19A5FCE000B834BF /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB3B19A5FCE000B834BF /* XCTest.framework */; };
 		E7FFCB3D19A5FCE000B834BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1919A5FCE000B834BF /* Foundation.framework */; };
@@ -38,6 +42,21 @@
 /* Begin PBXFileReference section */
 		58EF70AB6907453D93CAC93E /* Pods.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.xcconfig; path = Pods/Pods.xcconfig; sourceTree = "<group>"; };
 		824C1A026AE44FA6927A5D16 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		E72716B219A6E73600BAC5B2 /* IMMainViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMainViewController.h; sourceTree = "<group>"; };
+		E72716B319A6E73600BAC5B2 /* IMMainViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMainViewController.m; sourceTree = "<group>"; };
+		E72716B619A6E8C200BAC5B2 /* UIView+Position.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Position.h"; sourceTree = "<group>"; };
+		E72716B719A6E8C200BAC5B2 /* UIView+Position.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Position.m"; sourceTree = "<group>"; };
+		E72716BC19A6E9BA00BAC5B2 /* IMMovieModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMovieModel.h; sourceTree = "<group>"; };
+		E72716BD19A6E9BA00BAC5B2 /* IMMovieModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMovieModel.m; sourceTree = "<group>"; };
+		E72716BF19A6E9D400BAC5B2 /* IMAPIService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMAPIService.h; sourceTree = "<group>"; };
+		E72716C019A6E9D400BAC5B2 /* IMAPIService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMAPIService.m; sourceTree = "<group>"; };
+		E72716C619A6F17100BAC5B2 /* IMEnumType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMEnumType.h; sourceTree = "<group>"; };
+		E72716CC19A6F65500BAC5B2 /* IMMovieArticleModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMovieArticleModel.h; sourceTree = "<group>"; };
+		E72716CD19A6F65500BAC5B2 /* IMMovieArticleModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMovieArticleModel.m; sourceTree = "<group>"; };
+		E72716CF19A6F91300BAC5B2 /* IMMovieDetailModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMovieDetailModel.h; sourceTree = "<group>"; };
+		E72716D019A6F91300BAC5B2 /* IMMovieDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMovieDetailModel.m; sourceTree = "<group>"; };
+		E72716D219A6FAB300BAC5B2 /* ACModelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACModelParser.m; sourceTree = "<group>"; };
+		E72716D319A6FAB300BAC5B2 /* ACModelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACModelParser.h; sourceTree = "<group>"; };
 		E7FFCB1619A5FCE000B834BF /* iMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FFCB1919A5FCE000B834BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -48,10 +67,6 @@
 		E7FFCB2719A5FCE000B834BF /* iMovie-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "iMovie-Prefix.pch"; sourceTree = "<group>"; };
 		E7FFCB2819A5FCE000B834BF /* IMAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMAppDelegate.h; sourceTree = "<group>"; };
 		E7FFCB2919A5FCE000B834BF /* IMAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMAppDelegate.m; sourceTree = "<group>"; };
-		E7FFCB2C19A5FCE000B834BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		E7FFCB2F19A5FCE000B834BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		E7FFCB3119A5FCE000B834BF /* IMViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IMViewController.h; sourceTree = "<group>"; };
-		E7FFCB3219A5FCE000B834BF /* IMViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IMViewController.m; sourceTree = "<group>"; };
 		E7FFCB3419A5FCE000B834BF /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		E7FFCB3A19A5FCE000B834BF /* iMovieTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = iMovieTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FFCB3B19A5FCE000B834BF /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
@@ -85,6 +100,76 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E72716B019A6E71F00BAC5B2 /* class */ = {
+			isa = PBXGroup;
+			children = (
+				E72716C519A6F15F00BAC5B2 /* others */,
+				E72716BA19A6E93400BAC5B2 /* libs */,
+				E72716B919A6E92400BAC5B2 /* helper */,
+				E72716BB19A6E9A200BAC5B2 /* models */,
+				E72716B519A6E8C200BAC5B2 /* category */,
+				E72716B119A6E71F00BAC5B2 /* viewcontrollers */,
+			);
+			path = class;
+			sourceTree = "<group>";
+		};
+		E72716B119A6E71F00BAC5B2 /* viewcontrollers */ = {
+			isa = PBXGroup;
+			children = (
+				E72716B219A6E73600BAC5B2 /* IMMainViewController.h */,
+				E72716B319A6E73600BAC5B2 /* IMMainViewController.m */,
+			);
+			path = viewcontrollers;
+			sourceTree = "<group>";
+		};
+		E72716B519A6E8C200BAC5B2 /* category */ = {
+			isa = PBXGroup;
+			children = (
+				E72716B619A6E8C200BAC5B2 /* UIView+Position.h */,
+				E72716B719A6E8C200BAC5B2 /* UIView+Position.m */,
+			);
+			path = category;
+			sourceTree = "<group>";
+		};
+		E72716B919A6E92400BAC5B2 /* helper */ = {
+			isa = PBXGroup;
+			children = (
+				E72716BF19A6E9D400BAC5B2 /* IMAPIService.h */,
+				E72716C019A6E9D400BAC5B2 /* IMAPIService.m */,
+			);
+			path = helper;
+			sourceTree = "<group>";
+		};
+		E72716BA19A6E93400BAC5B2 /* libs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = libs;
+			sourceTree = "<group>";
+		};
+		E72716BB19A6E9A200BAC5B2 /* models */ = {
+			isa = PBXGroup;
+			children = (
+				E72716D319A6FAB300BAC5B2 /* ACModelParser.h */,
+				E72716D219A6FAB300BAC5B2 /* ACModelParser.m */,
+				E72716BC19A6E9BA00BAC5B2 /* IMMovieModel.h */,
+				E72716BD19A6E9BA00BAC5B2 /* IMMovieModel.m */,
+				E72716CC19A6F65500BAC5B2 /* IMMovieArticleModel.h */,
+				E72716CD19A6F65500BAC5B2 /* IMMovieArticleModel.m */,
+				E72716CF19A6F91300BAC5B2 /* IMMovieDetailModel.h */,
+				E72716D019A6F91300BAC5B2 /* IMMovieDetailModel.m */,
+			);
+			path = models;
+			sourceTree = "<group>";
+		};
+		E72716C519A6F15F00BAC5B2 /* others */ = {
+			isa = PBXGroup;
+			children = (
+				E72716C619A6F17100BAC5B2 /* IMEnumType.h */,
+			);
+			path = others;
+			sourceTree = "<group>";
+		};
 		E7FFCB0D19A5FCE000B834BF = {
 			isa = PBXGroup;
 			children = (
@@ -120,12 +205,9 @@
 		E7FFCB1F19A5FCE000B834BF /* iMovie */ = {
 			isa = PBXGroup;
 			children = (
+				E72716B019A6E71F00BAC5B2 /* class */,
 				E7FFCB2819A5FCE000B834BF /* IMAppDelegate.h */,
 				E7FFCB2919A5FCE000B834BF /* IMAppDelegate.m */,
-				E7FFCB2B19A5FCE000B834BF /* Main_iPhone.storyboard */,
-				E7FFCB2E19A5FCE000B834BF /* Main_iPad.storyboard */,
-				E7FFCB3119A5FCE000B834BF /* IMViewController.h */,
-				E7FFCB3219A5FCE000B834BF /* IMViewController.m */,
 				E7FFCB3419A5FCE000B834BF /* Images.xcassets */,
 				E7FFCB2019A5FCE000B834BF /* Supporting Files */,
 			);
@@ -240,9 +322,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				E7FFCB3019A5FCE000B834BF /* Main_iPad.storyboard in Resources */,
 				E7FFCB3519A5FCE000B834BF /* Images.xcassets in Resources */,
-				E7FFCB2D19A5FCE000B834BF /* Main_iPhone.storyboard in Resources */,
 				E7FFCB2419A5FCE000B834BF /* InfoPlist.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -296,8 +376,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7FFCB2A19A5FCE000B834BF /* IMAppDelegate.m in Sources */,
+				E72716D119A6F91300BAC5B2 /* IMMovieDetailModel.m in Sources */,
+				E72716BE19A6E9BA00BAC5B2 /* IMMovieModel.m in Sources */,
+				E72716C119A6E9D400BAC5B2 /* IMAPIService.m in Sources */,
+				E72716D419A6FAB300BAC5B2 /* ACModelParser.m in Sources */,
+				E72716CE19A6F65500BAC5B2 /* IMMovieArticleModel.m in Sources */,
+				E72716B819A6E8C200BAC5B2 /* UIView+Position.m in Sources */,
 				E7FFCB2619A5FCE000B834BF /* main.m in Sources */,
-				E7FFCB3319A5FCE000B834BF /* IMViewController.m in Sources */,
+				E72716B419A6E73600BAC5B2 /* IMMainViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -326,22 +412,6 @@
 				E7FFCB2319A5FCE000B834BF /* en */,
 			);
 			name = InfoPlist.strings;
-			sourceTree = "<group>";
-		};
-		E7FFCB2B19A5FCE000B834BF /* Main_iPhone.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E7FFCB2C19A5FCE000B834BF /* Base */,
-			);
-			name = Main_iPhone.storyboard;
-			sourceTree = "<group>";
-		};
-		E7FFCB2E19A5FCE000B834BF /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				E7FFCB2F19A5FCE000B834BF /* Base */,
-			);
-			name = Main_iPad.storyboard;
 			sourceTree = "<group>";
 		};
 		E7FFCB4419A5FCE000B834BF /* InfoPlist.strings */ = {
