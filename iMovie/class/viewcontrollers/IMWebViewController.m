@@ -7,6 +7,7 @@
 //
 
 #import "IMWebViewController.h"
+#import "UIViewController+Style.h"
 
 @interface IMWebViewController ()
 
@@ -37,7 +38,13 @@
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
     [self.view addSubview:_webView];
+   
+    [self addBackButtonWithTarget:self selector:@selector(back)];
+}
 
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 

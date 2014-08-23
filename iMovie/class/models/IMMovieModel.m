@@ -78,13 +78,13 @@
                   value:(id) [UIColor blackColor]
                   range:rangeAll];
     [title addAttribute:(NSString *)NSForegroundColorAttributeName
-                  value:(id)  [UIColor redColor]
+                  value:(id)  ColorCommentRed
                   range:rangeGood];
     [title addAttribute:(NSString *)NSForegroundColorAttributeName
-                  value:(id)  [UIColor blueColor]
+                  value:(id)  ColorCommentBlue
                   range:rangeNormal];
     [title addAttribute:(NSString *)NSForegroundColorAttributeName
-                  value:(id)  [UIColor greenColor]
+                  value:(id)  ColorCommentGreen
                   range:rangeBad];
     
     

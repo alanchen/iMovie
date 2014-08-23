@@ -15,17 +15,14 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        self.selectionStyle = UITableViewCellSelectionStyleNone;
+
         self.fullImageView= [[UIImageView alloc] initWithFrame:CGRectZero];
         [self.fullImageView setContentMode:UIViewContentModeScaleAspectFit];
         [self.contentView addSubview:self.fullImageView];
         
     }
     return self;
-}
-
-- (void)setSelected:(BOOL)selected animated:(BOOL)animated
-{
-    [super setSelected:selected animated:animated];
 }
 
 -(void)layoutSubviews

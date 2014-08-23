@@ -14,6 +14,7 @@
 #import "IMPttTableViewCell.h"
 #import "IMWebViewController.h"
 #import "UIImageView+AFNetworking.h"
+#import "UIViewController+Style.h"
 
 
 @interface IMMovieDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
@@ -33,12 +34,14 @@
 {
     [super viewDidLayoutSubviews];
     
-    self.segControl.width = self.view.width ;
+    self.segControl.width = self.view.width - 20;
+    self.segControl.left = 10;
+    self.segControl.top = 10;
     self.segControl.height = 36;
     
     self.tableView.width = self.view.width;
-    self.tableView.height = self.view.height - self.segControl.bottom;
-    self.tableView.top= self.segControl.bottom;
+    self.tableView.height = self.view.height - self.segControl.bottom - 10;
+    self.tableView.top= self.segControl.bottom + 10;
     
 }
 
@@ -60,8 +63,11 @@
     
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
+
+    [self addBackButtonWithTarget:self selector:@selector(back)];
     
     self.segControl = [[UISegmentedControl alloc] initWithItems:@[@"電影資訊",@"鄉民評論",@"圖輯"]];
+    self.segControl.tintColor = ColorThemeBlue;
     self.segControl.segmentedControlStyle = UISegmentedControlStylePlain;
     self.segControl.selectedSegmentIndex = 0;
     [self.segControl addTarget:self action:@selector(segmentedControlClick) forControlEvents:UIControlEventValueChanged];
@@ -80,12 +86,23 @@
     [self apiGetPttArticles];
 }
 
-#pragma  mark - Private
+#pragma  mark - Action
 
 -(void)segmentedControlClick
 {
     [self.tableView reloadData];
     [self.tableView setContentOffset:CGPointZero animated:NO];
+    
+    if(self.segControl.selectedSegmentIndex==1)
+        self.tableView.backgroundColor = [UIColor blackColor];
+    else
+        self.tableView.backgroundColor = [UIColor clearColor];
+    
+}
+
+-(void)back
+{
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 #pragma  mark - UITableView
@@ -213,6 +230,7 @@
         IMMovieArticleModel *article = [self.articles objectAtIndex:indexPath.row];
         IMWebViewController *vc = [IMWebViewController webViewControllerWithUrl:article.url];
         [self.navigationController pushViewController:vc animated:YES];
+        [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
 }
 

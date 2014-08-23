@@ -14,11 +14,11 @@
 {
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
-        self.backgroundColor = [UIColor clearColor];
-        self.contentView.backgroundColor = [UIColor clearColor];
+        self.backgroundColor = ColorThemeGray;
+        self.contentView.backgroundColor =ColorThemeGray;
 
         self.bg = [[UIImageView alloc] initWithFrame:CGRectZero];
-        self.bg.backgroundColor = [UIColor lightGrayColor];
+        self.bg.backgroundColor = [UIColor whiteColor];
         [self.contentView addSubview:self.bg];
         
         self.coverImageView = [[UIImageView alloc] initWithFrame:CGRectZero];
@@ -41,6 +41,7 @@
         [self.tomatoLabel setFont:IMFont(12)];
 
         self.dateLabel = [self addLabel];
+        self.dateLabel.textColor = ColorTextGray;
         self.dateLabel.textAlignment =  NSTextAlignmentRight;
         [self.dateLabel setFont:IMFont(12)];
     }
@@ -52,6 +53,7 @@
 {
     UILabel *l = [[UILabel alloc] initWithFrame:CGRectZero];
     l.backgroundColor = [UIColor clearColor];
+    l.textColor = [UIColor blackColor];
     [self.bg addSubview:l];
     
     return l;
@@ -60,6 +62,27 @@
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated
 {
     [super setSelected:selected animated:animated];
+}
+
+-(void)setHighlighted:(BOOL)highlighted animated:(BOOL)animated
+{
+    [super setHighlighted:highlighted animated:animated];
+    if(highlighted)
+    {
+        self.bg.backgroundColor = ColorThemeBlue;
+        self.titleLabel.textColor = [UIColor whiteColor];
+        self.descriptionLabel.textColor = [UIColor whiteColor];
+        self.tomatoLabel.textColor = [UIColor whiteColor];
+        self.imdbLabel.textColor = [UIColor whiteColor];
+    }
+    else
+    {
+        self.bg.backgroundColor = [UIColor whiteColor];
+        self.titleLabel.textColor = [UIColor blackColor];
+        self.descriptionLabel.textColor = [UIColor blackColor];
+        self.tomatoLabel.textColor = [UIColor blackColor];
+        self.imdbLabel.textColor = [UIColor blackColor];
+    }
 }
 
 -(void)layoutSubviews

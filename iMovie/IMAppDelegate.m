@@ -8,6 +8,8 @@
 
 #import "IMAppDelegate.h"
 #import "IMMainViewController.h"
+#import "UIViewController+Style.h"
+
 
 @implementation IMAppDelegate
 
@@ -54,6 +56,8 @@
 {
     IMMainViewController *rootVC = [[IMMainViewController alloc] init];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
+    
+    [rootVC setNavigationBarBackgroundColor:ColorThemeBlue];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = navi;

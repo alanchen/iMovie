@@ -22,6 +22,9 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        self.backgroundColor = [UIColor blackColor];
+        self.contentView.backgroundColor = [UIColor blackColor];
+        
         self.pushLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.pushLabel.backgroundColor = [UIColor clearColor];
         self.pushLabel.font =kTitleFont;
@@ -31,6 +34,7 @@
         self.titleLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.titleLabel.backgroundColor = [UIColor clearColor];
         self.titleLabel.lineBreakMode = kTitleLineBreak;
+        self.titleLabel.textColor = [UIColor whiteColor];
         self.titleLabel.font =kTitleFont;
         self.titleLabel.numberOfLines = 0;
         [self.contentView addSubview:self.titleLabel];
@@ -38,6 +42,7 @@
         self.idLabel = [[UILabel alloc] initWithFrame:CGRectZero];
         self.idLabel.backgroundColor = [UIColor clearColor];
         self.idLabel.font =IMFont(14);
+        self.idLabel.textColor = ColorTextGray;
         [self.contentView addSubview:self.idLabel];
     }
     return self;
@@ -88,9 +93,9 @@
     }
     else{
         if(push<=10)
-            self.pushLabel.textColor = [UIColor greenColor];
+            self.pushLabel.textColor = ColorCommentGreen;
         else if(push>10)
-            self.pushLabel.textColor = [UIColor yellowColor];
+            self.pushLabel.textColor = ColorCommentYellow;
     }
     
 }

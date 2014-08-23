@@ -21,6 +21,7 @@
 		E762035619A74C640025EC00 /* IMPttTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E762035519A74C640025EC00 /* IMPttTableViewCell.m */; };
 		E762035919A74C9B0025EC00 /* IMMovieDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E762035819A74C9B0025EC00 /* IMMovieDetailViewController.m */; };
 		E762035C19A74CBF0025EC00 /* IMWebViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = E762035B19A74CBF0025EC00 /* IMWebViewController.m */; };
+		E782B68719A89B1A00D0EE65 /* UIViewController+Style.m in Sources */ = {isa = PBXBuildFile; fileRef = E782B68619A89B1A00D0EE65 /* UIViewController+Style.m */; };
 		E7FFCB1A19A5FCE000B834BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1919A5FCE000B834BF /* Foundation.framework */; };
 		E7FFCB1C19A5FCE000B834BF /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */; };
 		E7FFCB1E19A5FCE000B834BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1D19A5FCE000B834BF /* UIKit.framework */; };
@@ -79,6 +80,9 @@
 		E762035819A74C9B0025EC00 /* IMMovieDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMovieDetailViewController.m; sourceTree = "<group>"; };
 		E762035A19A74CBF0025EC00 /* IMWebViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMWebViewController.h; sourceTree = "<group>"; };
 		E762035B19A74CBF0025EC00 /* IMWebViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMWebViewController.m; sourceTree = "<group>"; };
+		E782B68219A892CD00D0EE65 /* IMColor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMColor.h; sourceTree = "<group>"; };
+		E782B68519A89B1A00D0EE65 /* UIViewController+Style.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIViewController+Style.h"; sourceTree = "<group>"; };
+		E782B68619A89B1A00D0EE65 /* UIViewController+Style.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIViewController+Style.m"; sourceTree = "<group>"; };
 		E7FFCB1619A5FCE000B834BF /* iMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FFCB1919A5FCE000B834BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -156,6 +160,8 @@
 				E72716B719A6E8C200BAC5B2 /* UIView+Position.m */,
 				E762034B19A741210025EC00 /* NSDate+Format.h */,
 				E762034C19A741210025EC00 /* NSDate+Format.m */,
+				E782B68519A89B1A00D0EE65 /* UIViewController+Style.h */,
+				E782B68619A89B1A00D0EE65 /* UIViewController+Style.m */,
 			);
 			path = category;
 			sourceTree = "<group>";
@@ -196,6 +202,7 @@
 			children = (
 				E72716C619A6F17100BAC5B2 /* IMEnumType.h */,
 				E762034819A73EE00025EC00 /* IMDefine.h */,
+				E782B68219A892CD00D0EE65 /* IMColor.h */,
 			);
 			path = others;
 			sourceTree = "<group>";
@@ -432,6 +439,7 @@
 				E72716B819A6E8C200BAC5B2 /* UIView+Position.m in Sources */,
 				E762035319A74C490025EC00 /* IMMovieInfoTableViewCell.m in Sources */,
 				E7FFCB2619A5FCE000B834BF /* main.m in Sources */,
+				E782B68719A89B1A00D0EE65 /* UIViewController+Style.m in Sources */,
 				E762035019A74C110025EC00 /* IMFullImageTableViewCell.m in Sources */,
 				E762034719A7198D0025EC00 /* IMMainTableViewCell.m in Sources */,
 				E762034D19A741210025EC00 /* NSDate+Format.m in Sources */,

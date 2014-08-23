@@ -11,6 +11,7 @@
 #import "IMMainTableViewCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "IMMovieDetailViewController.h"
+#import "UIViewController+Style.h"
 
 @interface IMMainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
@@ -44,9 +45,8 @@
     self.segControl.top= padding;
     
     self.tableView.width = self.view.width;
-    self.tableView.height = self.view.height - self.segControl.bottom;
-    self.tableView.top= self.segControl.bottom;
-    
+    self.tableView.height = self.view.height - self.segControl.bottom - padding;
+    self.tableView.top= self.segControl.bottom+padding;
 }
 
 - (void)viewDidLoad
@@ -59,13 +59,15 @@
     
     self.segControl = [[UISegmentedControl alloc] initWithItems:@[@"臺北票房",@"本週新片",@"即將上映",@"近期電影"]];
     self.segControl.segmentedControlStyle = UISegmentedControlStyleBar;
+    self.segControl.tintColor =ColorThemeBlue;
     self.segControl.selectedSegmentIndex = 0;
     [self.segControl addTarget:self action:@selector(segmentedControlClick) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview: self.segControl];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero];
-    self.tableView.backgroundColor =[UIColor clearColor];
-    [self.tableView setContentInset:UIEdgeInsetsMake(10, 0, 10, 0)];
+    self.tableView.backgroundColor = ColorThemeGray;
+    [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 10, 0)];
+    [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[IMMainTableViewCell class] forCellReuseIdentifier:@"IMMainTableViewCell"];
@@ -170,6 +172,8 @@
     
     IMMovieDetailViewController *vc =[[IMMovieDetailViewController alloc] initWithMovie:movieObj];
     [self.navigationController pushViewController:vc animated:YES];
+    
+    [self.tableView deselectRowAtIndexPath:indexPath animated:NO];
 }
 
 #pragma  mark - API
