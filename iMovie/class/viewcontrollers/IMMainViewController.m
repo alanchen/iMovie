@@ -134,7 +134,22 @@
     self.type = self.segControl.selectedSegmentIndex;
     [self updateTableView];
     
-    [self apiGetMoviewListByType:self.type];
+    if(self.type == IMMovieListTypeTPRank && self.rankMovies == nil)
+    {
+        [self apiGetMoviewListByType:self.type];
+    }
+    else if(self.type == IMMovieListTypeThisWeek && self.thisweekMovies == nil)
+    {
+        [self apiGetMoviewListByType:self.type];
+    }
+    else if(self.type == IMMovieListTypeIncoming && self.incomingMovies == nil)
+    {
+        [self apiGetMoviewListByType:self.type];
+    }
+    else if(self.type == IMMovieListTypeInTheater && self.intheaterMovies == nil)
+    {
+        [self apiGetMoviewListByType:self.type];
+    }
 }
 
 #pragma  mark - UITableView
@@ -182,13 +197,16 @@
 {
     [self.currentRequest cancel];
     
+    [SVProgressHUD show];
+    
     self.currentRequest =
     [[IMAPIService sharedInstance] apiMovieListWithType:type
                                                 success:^(AFHTTPRequestOperation *operation, id movieList) {
                                                     [self setSoure:movieList ToType:type];
                                                     [self updateTableView];
+                                                    [SVProgressHUD dismiss];
                                                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                    
+                                                    [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
                                                 }];
 }
 

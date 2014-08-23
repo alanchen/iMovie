@@ -92,6 +92,7 @@
         self.pushLabel.hidden = YES;
     }
     else{
+        self.pushLabel.hidden = NO;
         if(push<=10)
             self.pushLabel.textColor = ColorCommentGreen;
         else if(push>10)

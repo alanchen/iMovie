@@ -18,4 +18,5 @@
     #import "IMEnumType.h"
     #import "IMDefine.h"
     #import "IMColor.h"
+    #import "SVProgressHUD.h"
 #endif

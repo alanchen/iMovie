@@ -12,6 +12,9 @@
 
 -(void)addBackButtonWithTarget:(id)target selector:(SEL)selector;
 -(void)setNavigationBarBackgroundColor:(UIColor *)color;
+-(void)setTitleImage:(NSString *)image;
+
++ (void)setNavigationTitleColor:(UIColor *)color;
 
 
 @end

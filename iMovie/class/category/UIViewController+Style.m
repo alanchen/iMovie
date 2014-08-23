@@ -37,8 +37,18 @@
     self.navigationController.navigationBar.backgroundColor = color;
 }
 
+-(void)setTitleImage:(NSString *)image
+{
+    [self.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:image] ]];
+}
 
-
++ (void)setNavigationTitleColor:(UIColor *)color
+{
+    NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
+                                               color,UITextAttributeTextColor,nil];
+    
+    [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+}
 
 
 

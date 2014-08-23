@@ -85,7 +85,6 @@
     [self.tableView registerClass:[IMMovieInfoTableViewCell class] forCellReuseIdentifier:@"IMMovieInfoTableViewCell"];
 
     [self apiGetMovieDetail];
-    [self apiGetPttArticles];
 }
 
 #pragma  mark - Action
@@ -96,14 +95,25 @@
     [self.tableView setContentOffset:CGPointZero animated:NO];
     
     if(self.segControl.selectedSegmentIndex==1)
+    {
         self.tableView.backgroundColor = [UIColor blackColor];
+        
+        if(self.articles==nil)
+            [self apiGetPttArticles];
+    }
     else
+    {
         self.tableView.backgroundColor = [UIColor clearColor];
-    
+        
+        if (self.segControl.selectedSegmentIndex==0  && self.movieDetail==nil){
+            [self apiGetMovieDetail];
+        }
+    }
 }
 
 -(void)back
 {
+    [SVProgressHUD dismiss];
     [self.navigationController popViewControllerAnimated:YES];
 }
 
@@ -238,28 +248,35 @@
 
 #pragma  mark - API
 
+
 -(void)apiGetMovieDetail
 {
+    [SVProgressHUD show];
+    
     [[IMAPIService sharedInstance] apiMovieDetailWithMovieId:self.movie._id
                                                      success:^(AFHTTPRequestOperation *operation, IMMovieDetailModel *movie) {
                                                          self.movieDetail = movie;
                                                          [self.tableView reloadData];
+                                                         [SVProgressHUD dismiss];
                                                      }
                                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                         
+                                                         [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
                                                      }];
     
 }
 
 -(void)apiGetPttArticles
 {
+    [SVProgressHUD show];
+    
     [[IMAPIService sharedInstance] apiGetMovieArticleList:IMMovieArticleTypeGood
                                                     title:self.movie.ch_name
                                                   success:^(AFHTTPRequestOperation *operation, id articleList) {
                                                       self.articles = articleList;
                                                       [self.tableView reloadData];
+                                                      [SVProgressHUD dismiss];
                                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                      
+                                                      [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
                                                   }];
 }
 

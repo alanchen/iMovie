@@ -58,12 +58,8 @@
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
     
     [rootVC setNavigationBarBackgroundColor:ColorThemeBlue];
-    [rootVC.navigationItem setTitleView:[[UIImageView alloc] initWithImage:[UIImage imageNamed:@"title"] ]];
-    
-    NSDictionary *navbarTitleTextAttributes = [NSDictionary dictionaryWithObjectsAndKeys:
-                                               [UIColor whiteColor],UITextAttributeTextColor,nil];
-    
-    [[UINavigationBar appearance] setTitleTextAttributes:navbarTitleTextAttributes];
+    [rootVC setTitleImage:@"title"];
+    [UIViewController setNavigationTitleColor:[UIColor whiteColor]];
     
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = navi;
