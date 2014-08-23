@@ -12,6 +12,8 @@
 @interface IMWebViewController ()<UIWebViewDelegate>
 
 @property (nonatomic,strong)NSString *url;
+@property (nonatomic,strong)UIActivityIndicatorView *spinner;
+
 
 @end
 
@@ -29,6 +31,11 @@
 {
     [super viewDidLayoutSubviews];
     _webView.frame = self.view.frame;
+    
+    self.spinner.centerY = self.navigationController.navigationBar.height/2;
+    self.spinner.right = self.navigationController.navigationBar.width-10;
+    
+
 }
 
 - (void)viewDidLoad
@@ -40,25 +47,27 @@
     _webView.delegate = self;
     [self.view addSubview:_webView];
    
-    [self addBackButtonWithTarget:self selector:@selector(back)];
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self.spinner startAnimating];
+    [self.navigationController.navigationBar addSubview:self.spinner];
     
-    [SVProgressHUD show];
+    [self addBackButtonWithTarget:self selector:@selector(back)];
 }
 
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
-    [SVProgressHUD dismiss];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [SVProgressHUD dismiss];
+    [self.spinner setHidden:YES];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
     [SVProgressHUD showErrorWithStatus:@"加載失敗，請稍後再試"];
+    [self.spinner setHidden:YES];
 }
 
 

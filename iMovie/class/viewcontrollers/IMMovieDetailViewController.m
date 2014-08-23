@@ -21,6 +21,7 @@
 
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UISegmentedControl *segControl;
+@property (nonatomic,strong)UIActivityIndicatorView *spinner;
 
 @property (nonatomic,strong)NSMutableArray *articles;
 
@@ -42,6 +43,10 @@
     self.tableView.width = self.view.width;
     self.tableView.height = self.view.height - self.segControl.bottom - 10;
     self.tableView.top= self.segControl.bottom + 10;
+    
+    self.spinner.centerY = self.navigationController.navigationBar.height/2;
+    self.spinner.right = self.navigationController.navigationBar.width-10;
+
     
 }
 
@@ -83,38 +88,45 @@
     [self.tableView registerClass:[IMPttTableViewCell class] forCellReuseIdentifier:@"IMPttTableViewCell"];
     [self.tableView registerClass:[IMFullImageTableViewCell class] forCellReuseIdentifier:@"IMFullImageTableViewCell"];
     [self.tableView registerClass:[IMMovieInfoTableViewCell class] forCellReuseIdentifier:@"IMMovieInfoTableViewCell"];
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
+    [self.spinner startAnimating];
+    [self.navigationController.navigationBar addSubview:self.spinner];
 
     [self apiGetMovieDetail];
+    [self apiGetPttArticles];
 }
 
 #pragma  mark - Action
 
 -(void)segmentedControlClick
 {
-    [self.tableView reloadData];
+    [self updateTableView];
     [self.tableView setContentOffset:CGPointZero animated:NO];
-    
-    if(self.segControl.selectedSegmentIndex==1)
-    {
-        self.tableView.backgroundColor = [UIColor blackColor];
-        
-        if(self.articles==nil)
-            [self apiGetPttArticles];
-    }
-    else
-    {
-        self.tableView.backgroundColor = [UIColor clearColor];
-        
-        if (self.segControl.selectedSegmentIndex==0  && self.movieDetail==nil){
-            [self apiGetMovieDetail];
-        }
-    }
 }
 
 -(void)back
 {
-    [SVProgressHUD dismiss];
     [self.navigationController popViewControllerAnimated:YES];
+}
+
+-(void)updateTableView
+{
+    [self.tableView reloadData];
+    
+    if(self.segControl.selectedSegmentIndex==1)
+    {
+        self.tableView.backgroundColor = [UIColor blackColor];
+    }
+    else
+    {
+        self.tableView.backgroundColor = [UIColor clearColor];
+    }
+    
+    if(self.movieDetail && self.articles)
+        self.spinner.hidden  = YES;
+    else
+        self.spinner.hidden  = NO;
 }
 
 #pragma  mark - UITableView
@@ -248,16 +260,12 @@
 
 #pragma  mark - API
 
-
 -(void)apiGetMovieDetail
 {
-    [SVProgressHUD show];
-    
     [[IMAPIService sharedInstance] apiMovieDetailWithMovieId:self.movie._id
                                                      success:^(AFHTTPRequestOperation *operation, IMMovieDetailModel *movie) {
                                                          self.movieDetail = movie;
-                                                         [self.tableView reloadData];
-                                                         [SVProgressHUD dismiss];
+                                                         [self updateTableView];
                                                      }
                                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                          [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
@@ -267,14 +275,11 @@
 
 -(void)apiGetPttArticles
 {
-    [SVProgressHUD show];
-    
     [[IMAPIService sharedInstance] apiGetMovieArticleList:IMMovieArticleTypeGood
                                                     title:self.movie.ch_name
                                                   success:^(AFHTTPRequestOperation *operation, id articleList) {
                                                       self.articles = articleList;
-                                                      [self.tableView reloadData];
-                                                      [SVProgressHUD dismiss];
+                                                      [self updateTableView];
                                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                       [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
                                                   }];

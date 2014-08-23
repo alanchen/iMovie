@@ -17,6 +17,8 @@
 
 @property (nonatomic,strong)UISegmentedControl *segControl;
 @property (nonatomic,strong)UITableView *tableView;
+@property (nonatomic,strong)UIActivityIndicatorView *spinner;
+
 
 @property (nonatomic,strong)NSMutableArray *rankMovies;
 @property (nonatomic,strong)NSMutableArray *thisweekMovies;
@@ -25,7 +27,11 @@
 @property (nonatomic,strong)NSMutableArray *tableDataSource;
 
 @property (nonatomic)IMMovieListType type;
-@property (nonatomic,weak)AFHTTPRequestOperation *currentRequest;
+
+@property (nonatomic,weak)AFHTTPRequestOperation *op1;
+@property (nonatomic,weak)AFHTTPRequestOperation *op2;
+@property (nonatomic,weak)AFHTTPRequestOperation *op3;
+@property (nonatomic,weak)AFHTTPRequestOperation *op4;
 
 @end
 
@@ -47,6 +53,10 @@
     self.tableView.width = self.view.width;
     self.tableView.height = self.view.height - self.segControl.bottom - padding;
     self.tableView.top= self.segControl.bottom+padding;
+    
+    self.spinner.centerX = self.tableView.width/2;
+    self.spinner.centerY = self.tableView.height/2;
+
 }
 
 - (void)viewDidLoad
@@ -71,11 +81,21 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self.tableView registerClass:[IMMainTableViewCell class] forCellReuseIdentifier:@"IMMainTableViewCell"];
+    
+    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
+    [self.spinner startAnimating];
+    [self.tableView addSubview:self.spinner];
+
 
     [self.view addSubview: self.tableView];
     
     self.type = IMMovieListTypeTPRank;
-    [self apiGetMoviewListByType:self.type];
+    
+    [self apiGetMoviewListByType:IMMovieListTypeTPRank];
+    [self apiGetMoviewListByType:IMMovieListTypeThisWeek];
+    [self apiGetMoviewListByType:IMMovieListTypeInTheater];
+    [self apiGetMoviewListByType:IMMovieListTypeIncoming];
+
 }
 
 #pragma  mark - Private
@@ -105,11 +125,13 @@
     [self.tableView reloadData];
     
     [self.tableView setContentOffset:CGPointMake(0, 0) animated:NO];
+    
+    self.spinner.hidden = [self.tableDataSource count]!=0?YES:NO;
 }
 
 -(void)setSoure:(NSMutableArray *)array ToType:(IMMovieListType)type
 {
-    switch (self.type)
+    switch (type)
     {
         case IMMovieListTypeIncoming:
             self.incomingMovies = array;
@@ -134,19 +156,19 @@
     self.type = self.segControl.selectedSegmentIndex;
     [self updateTableView];
     
-    if(self.type == IMMovieListTypeTPRank && self.rankMovies == nil)
+    if(self.type == IMMovieListTypeTPRank && self.rankMovies == nil && !self.op1.isExecuting)
     {
         [self apiGetMoviewListByType:self.type];
     }
-    else if(self.type == IMMovieListTypeThisWeek && self.thisweekMovies == nil)
+    else if(self.type == IMMovieListTypeThisWeek && self.thisweekMovies == nil && !self.op2.isExecuting)
     {
         [self apiGetMoviewListByType:self.type];
     }
-    else if(self.type == IMMovieListTypeIncoming && self.incomingMovies == nil)
+    else if(self.type == IMMovieListTypeIncoming && self.incomingMovies == nil && !self.op3.isExecuting)
     {
         [self apiGetMoviewListByType:self.type];
     }
-    else if(self.type == IMMovieListTypeInTheater && self.intheaterMovies == nil)
+    else if(self.type == IMMovieListTypeInTheater && self.intheaterMovies == nil && !self.op4.isExecuting)
     {
         [self apiGetMoviewListByType:self.type];
     }
@@ -166,7 +188,7 @@
     IMMovieModel *movieObj = [self.tableDataSource objectAtIndex:indexPath.row];
     
     cell.titleLabel.text = movieObj.ch_name;
-    [cell.coverImageView  setImageWithURL:[NSURL URLWithString:movieObj.thumbnail_small]];
+    [cell.coverImageView  setImageWithURL:[NSURL URLWithString:movieObj.thumbnail_small] placeholderImage:[[UIImage alloc] init]];
     [cell.descriptionLabel setText:movieObj.description];
     [cell.imdbLabel setText:movieObj.imdbText];
     [cell.tomatoLabel setText:movieObj.tomatoText];
@@ -195,19 +217,25 @@
 
 -(void)apiGetMoviewListByType:(IMMovieListType)type
 {
-    [self.currentRequest cancel];
-    
-    [SVProgressHUD show];
-    
-    self.currentRequest =
+    AFHTTPRequestOperation *op=
     [[IMAPIService sharedInstance] apiMovieListWithType:type
                                                 success:^(AFHTTPRequestOperation *operation, id movieList) {
                                                     [self setSoure:movieList ToType:type];
                                                     [self updateTableView];
                                                     [SVProgressHUD dismiss];
                                                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
-                                                    [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
+                                                    if(error.code != -999)
+                                                        [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
                                                 }];
+    
+    if(type == IMMovieListTypeTPRank)
+        self.op1 = op;
+    else if(type == IMMovieListTypeThisWeek)
+        self.op2 = op;
+    else if(type == IMMovieListTypeIncoming)
+        self.op3 = op;
+    else if(type == IMMovieListTypeInTheater)
+        self.op4 = op;
 }
 
 @end

@@ -29,6 +29,7 @@
     AFJSONResponseSerializer *serializer = [AFJSONResponseSerializer serializer];
     serializer.acceptableContentTypes = [NSSet setWithObject:@"text/plain"];
     manager.responseSerializer = serializer;
+    manager.requestSerializer.timeoutInterval = 20;
     
     self.manager = manager;
 }
