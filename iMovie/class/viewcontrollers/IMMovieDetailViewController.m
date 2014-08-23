@@ -65,6 +65,8 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
 
     [self addBackButtonWithTarget:self selector:@selector(back)];
+    self.title = self.movie.ch_name;
+    self.
     
     self.segControl = [[UISegmentedControl alloc] initWithItems:@[@"電影資訊",@"鄉民評論",@"圖輯"]];
     self.segControl.tintColor = ColorThemeBlue;
