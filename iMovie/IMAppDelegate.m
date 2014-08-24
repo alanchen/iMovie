@@ -11,6 +11,7 @@
 #import "UIViewController+Style.h"
 #import "IMNaviSpinner.h"
 #import "GAI.h"
+#import <Crashlytics/Crashlytics.h>
 
 #define kGoogleAnalyticsId  @"UA-46013282-5"
 
@@ -23,6 +24,7 @@
     [self initWindow];
     [self initAdBanner];
     [self initGA];
+    [self initCrashlytics];
     
     return YES;
 }
@@ -103,8 +105,11 @@
     // Initialize tracker.
     id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsId];
     NSLog(@"tracker.name = %@",tracker.name);
+}
 
-
+-(void)initCrashlytics
+{
+    [Crashlytics startWithAPIKey:@"665fd4e82c885d0c0e6aeb2e5b16dbc601560575"];
 }
 
 @end
