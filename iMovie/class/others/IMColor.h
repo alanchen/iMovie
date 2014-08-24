@@ -8,7 +8,7 @@
 
 #define UIColorRGBA(r,g,b,a) [UIColor colorWithRed:(float)r/(float)255 green:(float)g/(float)255 blue:(float)b/(float)255 alpha:a]
 
-#define ColorThemeBlue  UIColorRGBA(72,66,183,1)
+#define ColorThemeBlue  UIColorRGBA(63,81,181,1)
 #define ColorThemeGray  UIColorRGBA(221,221,221,1)
 #define ColorTextGray   UIColorRGBA(170,170,170,1)
 

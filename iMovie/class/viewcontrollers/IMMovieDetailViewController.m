@@ -64,8 +64,6 @@
         self.edgesForExtendedLayout = UIRectEdgeNone;
 
     [self addBackButtonWithTarget:self selector:@selector(back)];
-    self.title = self.movie.ch_name;
-    self.
     
     self.segControl = [[UISegmentedControl alloc] initWithItems:@[@"電影資訊",@"鄉民評論",@"圖輯"]];
     self.segControl.tintColor = ColorThemeBlue;
@@ -100,6 +98,7 @@
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+    [[IMNaviSpinner sharedInstance] stopAnimating];
 }
 
 -(void)updateTableView
@@ -245,7 +244,6 @@
     {
         IMMovieArticleModel *article = [self.articles objectAtIndex:indexPath.row];
         IMWebViewController *vc = [IMWebViewController webViewControllerWithUrl:article.url];
-        vc.title = self.movie.ch_name;
         [self.navigationController pushViewController:vc animated:YES];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }
@@ -262,6 +260,7 @@
                                                      }
                                                      failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                          [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
+                                                         [self updateTableView];
                                                      }];
     
 }
@@ -275,6 +274,7 @@
                                                       [self updateTableView];
                                                   } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                       [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
+                                                      [self updateTableView];
                                                   }];
 }
 

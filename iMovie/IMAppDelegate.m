@@ -72,8 +72,16 @@
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
     
     [rootVC setNavigationBarBackgroundColor:ColorThemeBlue];
-    [rootVC setTitleImage:@"title"];
     [UIViewController setNavigationTitleColor:[UIColor whiteColor]];
+    
+    UIImage *header = [UIImage imageNamed:@"header_ios7"];
+    UIImage *headerios6 = [UIImage imageNamed:@"header_ios6"];
+    
+    if(IS_OS_7_OR_LATER)
+        [navi.navigationBar setBackgroundImage:header forBarMetrics:UIBarMetricsDefault];
+    else
+        [navi.navigationBar setBackgroundImage:headerios6 forBarMetrics:UIBarMetricsDefault];
+
     
     IMNaviSpinner *spinner = [IMNaviSpinner sharedInstance];
     [navi.navigationBar addSubview:spinner];

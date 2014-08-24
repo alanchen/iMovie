@@ -52,6 +52,7 @@
 -(void)back
 {
     [self.navigationController popViewControllerAnimated:YES];
+    [[IMNaviSpinner sharedInstance] stopAnimating];
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
