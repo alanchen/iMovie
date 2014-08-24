@@ -22,6 +22,8 @@
     self = [super initWithStyle:style reuseIdentifier:reuseIdentifier];
     if (self) {
         
+        [self setSelectionStyle:UITableViewCellSelectionStyleGray];
+        
         self.backgroundColor = [UIColor blackColor];
         self.contentView.backgroundColor = [UIColor blackColor];
         

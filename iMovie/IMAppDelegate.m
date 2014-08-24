@@ -74,14 +74,20 @@
     [rootVC setNavigationBarBackgroundColor:ColorThemeBlue];
     [UIViewController setNavigationTitleColor:[UIColor whiteColor]];
     
+    // init navigationbar
+    
     UIImage *header = [UIImage imageNamed:@"header_ios7"];
     UIImage *headerios6 = [UIImage imageNamed:@"header_ios6"];
     
+    [header stretchableImageWithLeftCapWidth:0 topCapHeight:0];
+    [headerios6 stretchableImageWithLeftCapWidth:10 topCapHeight:10];
+
     if(IS_OS_7_OR_LATER)
         [navi.navigationBar setBackgroundImage:header forBarMetrics:UIBarMetricsDefault];
     else
         [navi.navigationBar setBackgroundImage:headerios6 forBarMetrics:UIBarMetricsDefault];
 
+    // init spinner
     
     IMNaviSpinner *spinner = [IMNaviSpinner sharedInstance];
     [navi.navigationBar addSubview:spinner];
@@ -92,6 +98,7 @@
     self.window.rootViewController = navi;
     [self.window makeKeyAndVisible];
 }
+
 
 -(void)initAdBanner
 {
