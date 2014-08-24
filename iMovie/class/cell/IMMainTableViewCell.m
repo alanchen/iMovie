@@ -82,7 +82,7 @@
     {
         self.bg.backgroundColor = [UIColor whiteColor];
         self.titleLabel.textColor = [UIColor blackColor];
-        self.descriptionLabel.textColor = [UIColor blackColor];
+        self.descriptionLabel.textColor = ColorTextGray;
         self.tomatoLabel.textColor = [UIColor blackColor];
         self.imdbLabel.textColor = [UIColor blackColor];
     }
