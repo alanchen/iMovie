@@ -10,6 +10,9 @@
 #import "IMMainViewController.h"
 #import "UIViewController+Style.h"
 #import "IMNaviSpinner.h"
+#import "GAI.h"
+
+#define kGoogleAnalyticsId  @"UA-46013282-5"
 
 @implementation IMAppDelegate
 
@@ -19,6 +22,7 @@
 {
     [self initWindow];
     [self initAdBanner];
+    [self initGA];
     
     return YES;
 }
@@ -84,6 +88,23 @@
     
     [self.window.rootViewController.view addSubview:_adBannerView];
     _adBannerView.top = [self.window bounds].size.height;
+}
+
+-(void)initGA
+{
+    [GAI sharedInstance].trackUncaughtExceptions = YES;
+    
+    // Optional: set Google Analytics dispatch interval to e.g. 20 seconds.
+    [GAI sharedInstance].dispatchInterval = 20;
+    
+    // Optional: set Logger to VERBOSE for debug information.
+    [[[GAI sharedInstance] logger] setLogLevel:kGAILogLevelNone];//kGAILogLevelVerbose
+    
+    // Initialize tracker.
+    id<GAITracker> tracker = [[GAI sharedInstance] trackerWithTrackingId:kGoogleAnalyticsId];
+    NSLog(@"tracker.name = %@",tracker.name);
+
+
 }
 
 @end

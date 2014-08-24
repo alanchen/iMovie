@@ -33,6 +33,9 @@
 		E782B6AE19A99E0A00D0EE65 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E782B6AD19A99E0A00D0EE65 /* CoreTelephony.framework */; };
 		E782B6B219A99EC400D0EE65 /* AdBannerView.m in Sources */ = {isa = PBXBuildFile; fileRef = E782B6B119A99EC400D0EE65 /* AdBannerView.m */; };
 		E789434119A9B7EB006DDB42 /* IMNaviSpinner.m in Sources */ = {isa = PBXBuildFile; fileRef = E789434019A9B7EB006DDB42 /* IMNaviSpinner.m */; };
+		E789434A19A9CC4C006DDB42 /* libGoogleAnalyticsServices.a in Frameworks */ = {isa = PBXBuildFile; fileRef = E789434919A9CC4C006DDB42 /* libGoogleAnalyticsServices.a */; };
+		E789434C19A9CC88006DDB42 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E789434B19A9CC88006DDB42 /* CoreData.framework */; };
+		E789434E19A9CCA4006DDB42 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E789434D19A9CCA4006DDB42 /* libz.dylib */; };
 		E7FFCB1A19A5FCE000B834BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1919A5FCE000B834BF /* Foundation.framework */; };
 		E7FFCB1E19A5FCE000B834BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1D19A5FCE000B834BF /* UIKit.framework */; };
 		E7FFCB2419A5FCE000B834BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7FFCB2219A5FCE000B834BF /* InfoPlist.strings */; };
@@ -123,6 +126,15 @@
 		E782B6B119A99EC400D0EE65 /* AdBannerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdBannerView.m; sourceTree = "<group>"; };
 		E789433F19A9B7EB006DDB42 /* IMNaviSpinner.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMNaviSpinner.h; sourceTree = "<group>"; };
 		E789434019A9B7EB006DDB42 /* IMNaviSpinner.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMNaviSpinner.m; sourceTree = "<group>"; };
+		E789434319A9CC4C006DDB42 /* GAI.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAI.h; sourceTree = "<group>"; };
+		E789434419A9CC4C006DDB42 /* GAIDictionaryBuilder.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIDictionaryBuilder.h; sourceTree = "<group>"; };
+		E789434519A9CC4C006DDB42 /* GAIFields.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAIFields.h; sourceTree = "<group>"; };
+		E789434619A9CC4C006DDB42 /* GAILogger.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAILogger.h; sourceTree = "<group>"; };
+		E789434719A9CC4C006DDB42 /* GAITrackedViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITrackedViewController.h; sourceTree = "<group>"; };
+		E789434819A9CC4C006DDB42 /* GAITracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GAITracker.h; sourceTree = "<group>"; };
+		E789434919A9CC4C006DDB42 /* libGoogleAnalyticsServices.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGoogleAnalyticsServices.a; sourceTree = "<group>"; };
+		E789434B19A9CC88006DDB42 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
+		E789434D19A9CCA4006DDB42 /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		E7FFCB1619A5FCE000B834BF /* iMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FFCB1919A5FCE000B834BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -146,9 +158,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E789434E19A9CCA4006DDB42 /* libz.dylib in Frameworks */,
+				E789434C19A9CC88006DDB42 /* CoreData.framework in Frameworks */,
 				E782B6AE19A99E0A00D0EE65 /* CoreTelephony.framework in Frameworks */,
 				E782B6AC19A99DF200D0EE65 /* AVFoundation.framework in Frameworks */,
 				E782B6AA19A99DE400D0EE65 /* CoreGraphics.framework in Frameworks */,
+				E789434A19A9CC4C006DDB42 /* libGoogleAnalyticsServices.a in Frameworks */,
 				E782B6A919A99DDB00D0EE65 /* SystemConfiguration.framework in Frameworks */,
 				E782B6A819A99DD000D0EE65 /* StoreKit.framework in Frameworks */,
 				E782B6A619A99DC500D0EE65 /* AdSupport.framework in Frameworks */,
@@ -227,6 +242,7 @@
 		E72716BA19A6E93400BAC5B2 /* libs */ = {
 			isa = PBXGroup;
 			children = (
+				E789434219A9CC4C006DDB42 /* GoogleAnalytics */,
 				E782B68819A99D5700D0EE65 /* ad */,
 			);
 			path = libs;
@@ -325,6 +341,20 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		E789434219A9CC4C006DDB42 /* GoogleAnalytics */ = {
+			isa = PBXGroup;
+			children = (
+				E789434319A9CC4C006DDB42 /* GAI.h */,
+				E789434419A9CC4C006DDB42 /* GAIDictionaryBuilder.h */,
+				E789434519A9CC4C006DDB42 /* GAIFields.h */,
+				E789434619A9CC4C006DDB42 /* GAILogger.h */,
+				E789434719A9CC4C006DDB42 /* GAITrackedViewController.h */,
+				E789434819A9CC4C006DDB42 /* GAITracker.h */,
+				E789434919A9CC4C006DDB42 /* libGoogleAnalyticsServices.a */,
+			);
+			path = GoogleAnalytics;
+			sourceTree = "<group>";
+		};
 		E7FFCB0D19A5FCE000B834BF = {
 			isa = PBXGroup;
 			children = (
@@ -348,6 +378,8 @@
 		E7FFCB1819A5FCE000B834BF /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E789434D19A9CCA4006DDB42 /* libz.dylib */,
+				E789434B19A9CC88006DDB42 /* CoreData.framework */,
 				E782B6AD19A99E0A00D0EE65 /* CoreTelephony.framework */,
 				E782B6AB19A99DF200D0EE65 /* AVFoundation.framework */,
 				E782B6A719A99DD000D0EE65 /* StoreKit.framework */,
@@ -682,6 +714,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMovie/class/libs/ad/GoogleAdMobAdsSdkiOS-6.9.3",
+					"$(PROJECT_DIR)/iMovie/class/libs/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -701,6 +734,7 @@
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/iMovie/class/libs/ad/GoogleAdMobAdsSdkiOS-6.9.3",
+					"$(PROJECT_DIR)/iMovie/class/libs/GoogleAnalytics",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
