@@ -12,8 +12,10 @@
 #import "IMNaviSpinner.h"
 #import "GAI.h"
 #import <Crashlytics/Crashlytics.h>
+#import <Appirater/Appirater.h>
 
 #define kGoogleAnalyticsId  @"UA-46013282-5"
+#define kAppId 830691157
 
 @implementation IMAppDelegate
 
@@ -25,6 +27,7 @@
     [self initAdBanner];
     [self initGA];
     [self initCrashlytics];
+    [self initAppirater];
     
     return YES;
 }
@@ -110,6 +113,18 @@
 -(void)initCrashlytics
 {
     [Crashlytics startWithAPIKey:@"665fd4e82c885d0c0e6aeb2e5b16dbc601560575"];
+}
+
+-(void)initAppirater
+{
+    [Appirater setAppId:[NSString stringWithFormat:@"%d", kAppId]];
+    [Appirater setDaysUntilPrompt:3];
+    [Appirater setUsesUntilPrompt:5];
+    [Appirater setSignificantEventsUntilPrompt:-1];
+    [Appirater setTimeBeforeReminding:7];
+    [Appirater setDebug:NO];
+    
+    [Appirater appLaunched:YES];
 }
 
 @end
