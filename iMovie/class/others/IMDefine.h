@@ -10,3 +10,6 @@
 #define IMFont(size) [UIFont systemFontOfSize:size]
 #define IMBoldFont(size) [UIFont boldSystemFontOfSize:size]
 
+#define IS_OS_7_OR_LATER    ([[[UIDevice currentDevice] systemVersion] floatValue] >= 7.0)
+
+

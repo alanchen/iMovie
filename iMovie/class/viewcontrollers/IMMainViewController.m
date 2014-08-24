@@ -48,7 +48,7 @@
     self.segControl.width = self.view.width - 2*padding;
     self.segControl.height = 36;
     self.segControl.left = padding;
-    self.segControl.top= padding;
+    self.segControl.top = padding;
     
     self.tableView.width = self.view.width;
     self.tableView.height = self.view.height - self.segControl.bottom - padding;
@@ -56,7 +56,7 @@
     
     self.spinner.centerX = self.tableView.width/2;
     self.spinner.centerY = self.tableView.height/2;
-
+    
 }
 
 - (void)viewDidLoad
@@ -84,8 +84,8 @@
     
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [self.spinner startAnimating];
+    self.spinner.hidesWhenStopped = YES;
     [self.tableView addSubview:self.spinner];
-
 
     [self.view addSubview: self.tableView];
     
@@ -126,7 +126,12 @@
     
     [self.tableView setContentOffset:CGPointMake(0, 0) animated:NO];
     
-    self.spinner.hidden = [self.tableDataSource count]!=0?YES:NO;
+    if( [self.tableDataSource count] ){
+        [self.spinner stopAnimating];
+    }
+    else{
+        [self.spinner startAnimating];
+    }
 }
 
 -(void)setSoure:(NSMutableArray *)array ToType:(IMMovieListType)type

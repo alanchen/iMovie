@@ -7,9 +7,11 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AdBannerView.h"
 
 @interface IMAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
+@property (strong, nonatomic) AdBannerView *adBannerView;
 
 @end

@@ -15,14 +15,12 @@
 #import "IMWebViewController.h"
 #import "UIImageView+AFNetworking.h"
 #import "UIViewController+Style.h"
-
+#import "IMNaviSpinner.h"
 
 @interface IMMovieDetailViewController ()<UITableViewDataSource,UITableViewDelegate>
 
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UISegmentedControl *segControl;
-@property (nonatomic,strong)UIActivityIndicatorView *spinner;
-
 @property (nonatomic,strong)NSMutableArray *articles;
 
 @end
@@ -43,10 +41,6 @@
     self.tableView.width = self.view.width;
     self.tableView.height = self.view.height - self.segControl.bottom - 10;
     self.tableView.top= self.segControl.bottom + 10;
-    
-    self.spinner.centerY = self.navigationController.navigationBar.height/2;
-    self.spinner.right = self.navigationController.navigationBar.width-10;
-
     
 }
 
@@ -75,7 +69,7 @@
     
     self.segControl = [[UISegmentedControl alloc] initWithItems:@[@"電影資訊",@"鄉民評論",@"圖輯"]];
     self.segControl.tintColor = ColorThemeBlue;
-    self.segControl.segmentedControlStyle = UISegmentedControlStylePlain;
+    self.segControl.segmentedControlStyle = UISegmentedControlStyleBar;
     self.segControl.selectedSegmentIndex = 0;
     [self.segControl addTarget:self action:@selector(segmentedControlClick) forControlEvents:UIControlEventValueChanged];
     [self.view addSubview: self.segControl];
@@ -89,9 +83,7 @@
     [self.tableView registerClass:[IMFullImageTableViewCell class] forCellReuseIdentifier:@"IMFullImageTableViewCell"];
     [self.tableView registerClass:[IMMovieInfoTableViewCell class] forCellReuseIdentifier:@"IMMovieInfoTableViewCell"];
     
-    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    [self.spinner startAnimating];
-    [self.navigationController.navigationBar addSubview:self.spinner];
+    [[IMNaviSpinner sharedInstance] startAnimating];
 
     [self apiGetMovieDetail];
     [self apiGetPttArticles];
@@ -124,9 +116,9 @@
     }
     
     if(self.movieDetail && self.articles)
-        self.spinner.hidden  = YES;
+        [[IMNaviSpinner sharedInstance] stopAnimating];
     else
-        self.spinner.hidden  = NO;
+        [[IMNaviSpinner sharedInstance] startAnimating];
 }
 
 #pragma  mark - UITableView
@@ -253,6 +245,7 @@
     {
         IMMovieArticleModel *article = [self.articles objectAtIndex:indexPath.row];
         IMWebViewController *vc = [IMWebViewController webViewControllerWithUrl:article.url];
+        vc.title = self.movie.ch_name;
         [self.navigationController pushViewController:vc animated:YES];
         [self.tableView deselectRowAtIndexPath:indexPath animated:YES];
     }

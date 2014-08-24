@@ -8,12 +8,11 @@
 
 #import "IMWebViewController.h"
 #import "UIViewController+Style.h"
+#import "IMNaviSpinner.h"
 
 @interface IMWebViewController ()<UIWebViewDelegate>
 
 @property (nonatomic,strong)NSString *url;
-@property (nonatomic,strong)UIActivityIndicatorView *spinner;
-
 
 @end
 
@@ -30,12 +29,9 @@
 -(void)viewDidLayoutSubviews
 {
     [super viewDidLayoutSubviews];
-    _webView.frame = self.view.frame;
     
-    self.spinner.centerY = self.navigationController.navigationBar.height/2;
-    self.spinner.right = self.navigationController.navigationBar.width-10;
-    
-
+    _webView.width = self.view.width;
+    _webView.height = self.view.height;
 }
 
 - (void)viewDidLoad
@@ -45,11 +41,10 @@
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
     _webView.delegate = self;
+    _webView.scalesPageToFit = YES;
     [self.view addSubview:_webView];
-   
-    self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhite];
-    [self.spinner startAnimating];
-    [self.navigationController.navigationBar addSubview:self.spinner];
+    
+    [[IMNaviSpinner sharedInstance] startAnimating];
     
     [self addBackButtonWithTarget:self selector:@selector(back)];
 }
@@ -61,13 +56,12 @@
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
 {
-    [self.spinner setHidden:YES];
+    [[IMNaviSpinner sharedInstance] stopAnimating];
 }
 
 - (void)webView:(UIWebView *)webView didFailLoadWithError:(NSError *)error
 {
-    [SVProgressHUD showErrorWithStatus:@"加載失敗，請稍後再試"];
-    [self.spinner setHidden:YES];
+    [[IMNaviSpinner sharedInstance] stopAnimating];
 }
 
 

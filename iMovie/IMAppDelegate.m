@@ -9,7 +9,7 @@
 #import "IMAppDelegate.h"
 #import "IMMainViewController.h"
 #import "UIViewController+Style.h"
-
+#import "IMNaviSpinner.h"
 
 @implementation IMAppDelegate
 
@@ -18,6 +18,7 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     [self initWindow];
+    [self initAdBanner];
     
     return YES;
 }
@@ -61,10 +62,24 @@
     [rootVC setTitleImage:@"title"];
     [UIViewController setNavigationTitleColor:[UIColor whiteColor]];
     
+    IMNaviSpinner *spinner = [IMNaviSpinner sharedInstance];
+    [navi.navigationBar addSubview:spinner];
+    spinner.centerY = navi.navigationBar.height/2;
+    spinner.right = navi.navigationBar.width - 10;
+    
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     self.window.rootViewController = navi;
     [self.window makeKeyAndVisible];
 }
 
+-(void)initAdBanner
+{
+    _adBannerView = [AdBannerView sharedInstance];
+    _adBannerView.rootViewController = self.window.rootViewController;
+    [_adBannerView loadAdRequest];
+    
+    [self.window.rootViewController.view addSubview:_adBannerView];
+    _adBannerView.top = [self.window bounds].size.height;
+}
 
 @end

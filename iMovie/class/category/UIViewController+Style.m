@@ -13,12 +13,13 @@
 
 -(void)addBackButtonWithTarget:(id)target selector:(SEL)selector
 {
-    UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithTitle:@"返回"
-                                                                         style:UIBarButtonItemStylePlain
-                                                                        target:target
-                                                                        action:selector];
+    UIButton *backBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    [backBtn setImage:[UIImage imageNamed:@"back"] forState:UIControlStateNormal];
+    [backBtn sizeToFit];
+    [backBtn addTarget:target action:selector forControlEvents:UIControlEventTouchUpInside];
     
-    [customBackButton setTintColor:[UIColor whiteColor]];
+    UIBarButtonItem *customBackButton = [[UIBarButtonItem alloc] initWithCustomView:backBtn];
+    
     self.navigationItem.leftBarButtonItem = customBackButton;
 }
 
