@@ -55,6 +55,10 @@
 
 -(void)initWindow
 {
+    // Tirck for ios6 admob bug
+    if(IS_OS_7_OR_LATER == NO)
+        [[UIApplication sharedApplication] setStatusBarHidden:YES];
+    
     IMMainViewController *rootVC = [[IMMainViewController alloc] init];
     UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:rootVC];
     

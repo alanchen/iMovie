@@ -18,6 +18,8 @@
     static dispatch_once_t onceToken;
     dispatch_once(&onceToken, ^{
         sharedInstance = [AdBannerView view];
+        [NSTimer scheduledTimerWithTimeInterval:30 target:sharedInstance selector:@selector(checkFailAndReload) userInfo:nil repeats:YES];
+
     });
     
     return sharedInstance;
@@ -50,17 +52,23 @@
 -(void)layoutNavigatioController
 {
     UINavigationController *navi = (UINavigationController *)self.window.rootViewController;
-    
-    if(_orinalViewHeight==0)
-    {
+
+    if(_orinalViewHeight==0){
         _orinalViewHeight =navi.view.height;
     }
     
-    navi.view.height = _orinalViewHeight - [self getDisplayHeight];
+    navi.view.height = _orinalViewHeight - self.height;
     
     [navi.view setNeedsLayout];
     [navi.view layoutIfNeeded];
 }
+
+-(void)checkFailAndReload
+{
+    if(self.isAdDidReceived == NO)
+        [self loadAdRequest];
+}
+
 
 #pragma  mark - delegate
 
