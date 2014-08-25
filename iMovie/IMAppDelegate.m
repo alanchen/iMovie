@@ -106,7 +106,7 @@
     _adBannerView.rootViewController = self.window.rootViewController;
     [_adBannerView loadAdRequest];
     
-    [self.window.rootViewController.view addSubview:_adBannerView];
+    [self.window insertSubview:_adBannerView atIndex:0];
     _adBannerView.top = [self.window bounds].size.height;
 }
 
