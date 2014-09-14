@@ -68,6 +68,8 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.title = @"鄉民看電影";
     self.view.backgroundColor = [UIColor whiteColor];
     
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])

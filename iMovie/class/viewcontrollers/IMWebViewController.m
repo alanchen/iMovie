@@ -38,6 +38,8 @@
 {
     [super viewDidLoad];
     
+    self.title = @"鄉民看電影";
+    
     _webView = [[UIWebView alloc] initWithFrame:self.view.frame];
     [_webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:_url]]];
     _webView.delegate = self;

@@ -3,22 +3,22 @@
     {
       "idiom" : "iphone",
       "scale" : "1x",
-      "filename" : "header_ios7-1.png"
+      "filename" : "green.png"
     },
     {
       "idiom" : "iphone",
       "scale" : "2x",
-      "filename" : "header_ios7.png"
+      "filename" : "green-1.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "1x",
-      "filename" : "header_ios7_ipad-1.png"
+      "filename" : "green-2.png"
     },
     {
       "idiom" : "ipad",
       "scale" : "2x",
-      "filename" : "header_ios7_ipad.png"
+      "filename" : "green-3.png"
     }
   ],
   "info" : {

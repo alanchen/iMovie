@@ -58,6 +58,7 @@
 {
     [super viewDidLoad];
     
+    self.title = self.movie.ch_name;
     self.view.backgroundColor = [UIColor whiteColor];
     
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
