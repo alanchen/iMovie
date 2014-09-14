@@ -134,6 +134,49 @@
     return op;
 }
 
+-(AFHTTPRequestOperation *)apiGetCurrentMoviesWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id movieList))success
+                                                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString *now = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]*1000];
+    
+    NSMutableDictionary *params = [@{} mutableCopy];
+    [params setObject:@"0" forKey:@"from"];
+    [params setObject:now forKey:@"till"];
+
+    AFHTTPRequestOperation *op =
+    [_manager GET:@"/movie" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(success)
+            success(operation, [IMMovieModel parseListData:responseObject]);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(failure)
+            failure(operation, error);
+    }];
+    
+    return op;
+
+}
+
+-(AFHTTPRequestOperation *)apiGetFutureMoviesWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id movieList))success
+                                                 failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure
+{
+    NSString *now = [NSString stringWithFormat:@"%.0f",[[NSDate date] timeIntervalSince1970]*1000];
+    
+    NSMutableDictionary *params = [@{} mutableCopy];
+    [params setObject:now forKey:@"from"];
+    [params setObject:@"0" forKey:@"till"];
+    
+    AFHTTPRequestOperation *op =
+    [_manager GET:@"/movie" parameters:params success:^(AFHTTPRequestOperation *operation, id responseObject) {
+        if(success)
+            success(operation, [IMMovieModel parseListData:responseObject]);
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(failure)
+            failure(operation, error);
+    }];
+    
+    return op;
+}
+
 
 
 @end

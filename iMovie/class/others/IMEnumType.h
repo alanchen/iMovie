@@ -20,3 +20,15 @@ typedef NS_ENUM(NSInteger, IMMovieArticleType) {
     IMMovieArticleTypeNormal = 1,
     IMMovieArticleTypeBad = 2,
 };
+
+
+typedef NS_ENUM(NSInteger, IMMovieListSort) {
+    IMMovieListSortUnknown = -1,
+    IMMovieListSortHitto = 0,
+    IMMovieListSortGood = 1,
+    IMMovieListSortBad = 2,
+    IMMovieListSortTPRank = 3,
+    IMMovieListSortIMDB = 4,
+    IMMovieListSortIncoming = 5
+
+};

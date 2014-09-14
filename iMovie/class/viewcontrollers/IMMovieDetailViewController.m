@@ -66,7 +66,7 @@
     [self addBackButtonWithTarget:self selector:@selector(back)];
     
     self.segControl = [[UISegmentedControl alloc] initWithItems:@[@"電影資訊",@"鄉民評論",@"圖輯"]];
-    self.segControl.tintColor = ColorThemeBlue;
+    self.segControl.tintColor = ColorThemeGreen;
     self.segControl.segmentedControlStyle = UISegmentedControlStyleBar;
     self.segControl.selectedSegmentIndex = 0;
     [self.segControl addTarget:self action:@selector(segmentedControlClick) forControlEvents:UIControlEventValueChanged];
@@ -193,7 +193,7 @@
     {
         IMFullImageTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IMFullImageTableViewCell" forIndexPath:indexPath];
         NSString *imgeUrl = [self.movieDetail.key_photos objectAtIndex:indexPath.row];
-        [cell.fullImageView setImageWithURL:[NSURL URLWithString:imgeUrl]];
+        [cell.fullImageView setImageWithURL:[NSURL URLWithString:imgeUrl] placeholderImage:[UIImage imageNamed:@"placeholder"]];
         
         return cell;
     }

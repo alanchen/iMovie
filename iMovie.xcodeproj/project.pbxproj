@@ -14,6 +14,9 @@
 		E72716CE19A6F65500BAC5B2 /* IMMovieArticleModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716CD19A6F65500BAC5B2 /* IMMovieArticleModel.m */; };
 		E72716D119A6F91300BAC5B2 /* IMMovieDetailModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716D019A6F91300BAC5B2 /* IMMovieDetailModel.m */; };
 		E72716D419A6FAB300BAC5B2 /* ACModelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E72716D219A6FAB300BAC5B2 /* ACModelParser.m */; };
+		E72C5E0119C4957B00891B57 /* IMMainTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E72C5E0019C4957B00891B57 /* IMMainTableCell.m */; };
+		E72C5E0419C5691F00891B57 /* IMErrorView.m in Sources */ = {isa = PBXBuildFile; fileRef = E72C5E0319C5691F00891B57 /* IMErrorView.m */; };
+		E72C5E0719C5ADF100891B57 /* NSArray+ACComon.m in Sources */ = {isa = PBXBuildFile; fileRef = E72C5E0519C5ADF100891B57 /* NSArray+ACComon.m */; };
 		E762034719A7198D0025EC00 /* IMMainTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E762034619A7198D0025EC00 /* IMMainTableViewCell.m */; };
 		E762034D19A741210025EC00 /* NSDate+Format.m in Sources */ = {isa = PBXBuildFile; fileRef = E762034C19A741210025EC00 /* NSDate+Format.m */; };
 		E762035019A74C110025EC00 /* IMFullImageTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E762034F19A74C110025EC00 /* IMFullImageTableViewCell.m */; };
@@ -37,6 +40,8 @@
 		E789434C19A9CC88006DDB42 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E789434B19A9CC88006DDB42 /* CoreData.framework */; };
 		E789434E19A9CCA4006DDB42 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = E789434D19A9CCA4006DDB42 /* libz.dylib */; };
 		E789435119A9D7C4006DDB42 /* Crashlytics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E789435019A9D7C4006DDB42 /* Crashlytics.framework */; };
+		E7CFAD4719C5BE900079A951 /* IMProgressBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CFAD4619C5BE900079A951 /* IMProgressBar.m */; };
+		E7CFAD4A19C5E7030079A951 /* JEProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E7CFAD4919C5E7030079A951 /* JEProgressView.m */; };
 		E7FFCB1A19A5FCE000B834BF /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1919A5FCE000B834BF /* Foundation.framework */; };
 		E7FFCB1E19A5FCE000B834BF /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E7FFCB1D19A5FCE000B834BF /* UIKit.framework */; };
 		E7FFCB2419A5FCE000B834BF /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = E7FFCB2219A5FCE000B834BF /* InfoPlist.strings */; };
@@ -79,6 +84,12 @@
 		E72716D019A6F91300BAC5B2 /* IMMovieDetailModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMovieDetailModel.m; sourceTree = "<group>"; };
 		E72716D219A6FAB300BAC5B2 /* ACModelParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ACModelParser.m; sourceTree = "<group>"; };
 		E72716D319A6FAB300BAC5B2 /* ACModelParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ACModelParser.h; sourceTree = "<group>"; };
+		E72C5DFF19C4957B00891B57 /* IMMainTableCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMainTableCell.h; sourceTree = "<group>"; };
+		E72C5E0019C4957B00891B57 /* IMMainTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMainTableCell.m; sourceTree = "<group>"; };
+		E72C5E0219C5691F00891B57 /* IMErrorView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMErrorView.h; sourceTree = "<group>"; };
+		E72C5E0319C5691F00891B57 /* IMErrorView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMErrorView.m; sourceTree = "<group>"; };
+		E72C5E0519C5ADF100891B57 /* NSArray+ACComon.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+ACComon.m"; sourceTree = "<group>"; };
+		E72C5E0619C5ADF100891B57 /* NSArray+ACComon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+ACComon.h"; sourceTree = "<group>"; };
 		E762034519A7198D0025EC00 /* IMMainTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMMainTableViewCell.h; sourceTree = "<group>"; };
 		E762034619A7198D0025EC00 /* IMMainTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMMainTableViewCell.m; sourceTree = "<group>"; };
 		E762034819A73EE00025EC00 /* IMDefine.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMDefine.h; sourceTree = "<group>"; };
@@ -139,6 +150,10 @@
 		E789435019A9D7C4006DDB42 /* Crashlytics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Crashlytics.framework; sourceTree = SOURCE_ROOT; };
 		E7B84DD019A9DF9B0045A60F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
 		E7B84DD119A9DF9B0045A60F /* zh-Hant */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = "zh-Hant"; path = "zh-Hant.lproj/InfoPlist.strings"; sourceTree = "<group>"; };
+		E7CFAD4519C5BE900079A951 /* IMProgressBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IMProgressBar.h; sourceTree = "<group>"; };
+		E7CFAD4619C5BE900079A951 /* IMProgressBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IMProgressBar.m; sourceTree = "<group>"; };
+		E7CFAD4819C5E7030079A951 /* JEProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JEProgressView.h; sourceTree = "<group>"; };
+		E7CFAD4919C5E7030079A951 /* JEProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = JEProgressView.m; sourceTree = "<group>"; };
 		E7FFCB1619A5FCE000B834BF /* iMovie.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = iMovie.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E7FFCB1919A5FCE000B834BF /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		E7FFCB1B19A5FCE000B834BF /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -225,6 +240,8 @@
 		E72716B519A6E8C200BAC5B2 /* category */ = {
 			isa = PBXGroup;
 			children = (
+				E72C5E0519C5ADF100891B57 /* NSArray+ACComon.m */,
+				E72C5E0619C5ADF100891B57 /* NSArray+ACComon.h */,
 				E72716B619A6E8C200BAC5B2 /* UIView+Position.h */,
 				E72716B719A6E8C200BAC5B2 /* UIView+Position.m */,
 				E762034B19A741210025EC00 /* NSDate+Format.h */,
@@ -282,6 +299,8 @@
 		E762034419A7196F0025EC00 /* cell */ = {
 			isa = PBXGroup;
 			children = (
+				E72C5DFF19C4957B00891B57 /* IMMainTableCell.h */,
+				E72C5E0019C4957B00891B57 /* IMMainTableCell.m */,
 				E762034519A7198D0025EC00 /* IMMainTableViewCell.h */,
 				E762034619A7198D0025EC00 /* IMMainTableViewCell.m */,
 				E762034E19A74C110025EC00 /* IMFullImageTableViewCell.h */,
@@ -343,6 +362,12 @@
 				E782B6B119A99EC400D0EE65 /* AdBannerView.m */,
 				E789433F19A9B7EB006DDB42 /* IMNaviSpinner.h */,
 				E789434019A9B7EB006DDB42 /* IMNaviSpinner.m */,
+				E72C5E0219C5691F00891B57 /* IMErrorView.h */,
+				E72C5E0319C5691F00891B57 /* IMErrorView.m */,
+				E7CFAD4519C5BE900079A951 /* IMProgressBar.h */,
+				E7CFAD4619C5BE900079A951 /* IMProgressBar.m */,
+				E7CFAD4819C5E7030079A951 /* JEProgressView.h */,
+				E7CFAD4919C5E7030079A951 /* JEProgressView.m */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -591,12 +616,14 @@
 			buildActionMask = 2147483647;
 			files = (
 				E7FFCB2A19A5FCE000B834BF /* IMAppDelegate.m in Sources */,
+				E7CFAD4719C5BE900079A951 /* IMProgressBar.m in Sources */,
 				E72716D119A6F91300BAC5B2 /* IMMovieDetailModel.m in Sources */,
 				E762035619A74C640025EC00 /* IMPttTableViewCell.m in Sources */,
 				E762035C19A74CBF0025EC00 /* IMWebViewController.m in Sources */,
 				E72716BE19A6E9BA00BAC5B2 /* IMMovieModel.m in Sources */,
 				E762035919A74C9B0025EC00 /* IMMovieDetailViewController.m in Sources */,
 				E72716C119A6E9D400BAC5B2 /* IMAPIService.m in Sources */,
+				E72C5E0719C5ADF100891B57 /* NSArray+ACComon.m in Sources */,
 				E72716D419A6FAB300BAC5B2 /* ACModelParser.m in Sources */,
 				E72716CE19A6F65500BAC5B2 /* IMMovieArticleModel.m in Sources */,
 				E72716B819A6E8C200BAC5B2 /* UIView+Position.m in Sources */,
@@ -605,6 +632,9 @@
 				E7FFCB2619A5FCE000B834BF /* main.m in Sources */,
 				E782B68719A89B1A00D0EE65 /* UIViewController+Style.m in Sources */,
 				E762035019A74C110025EC00 /* IMFullImageTableViewCell.m in Sources */,
+				E72C5E0419C5691F00891B57 /* IMErrorView.m in Sources */,
+				E7CFAD4A19C5E7030079A951 /* JEProgressView.m in Sources */,
+				E72C5E0119C4957B00891B57 /* IMMainTableCell.m in Sources */,
 				E762034719A7198D0025EC00 /* IMMainTableViewCell.m in Sources */,
 				E782B6B219A99EC400D0EE65 /* AdBannerView.m in Sources */,
 				E762034D19A741210025EC00 /* NSDate+Format.m in Sources */,

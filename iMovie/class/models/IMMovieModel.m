@@ -27,7 +27,7 @@
     NSString *IMDB =@"IMDB:";
     
     if(self.imdb>0)
-        value = [NSString stringWithFormat:@"%d",self.imdb];
+        value = [NSString stringWithFormat:@"%.1f",self.imdb*0.1];
     
     return [NSString stringWithFormat:@"%@ %@",IMDB,value];
 }
@@ -46,8 +46,20 @@
 -(NSString *)dateText
 {
     NSDate *date = [NSDate dateWithTimeIntervalSince1970:self.showtime*0.001];
+    NSString *dateStr = [date prettyDate];
     
-    return [NSString stringWithFormat:@"上映日期: %@",[date prettyDate]];
+    if([dateStr length]>8){
+        return dateStr;
+    }
+    
+    return [NSString stringWithFormat:@"上映日期: %@",dateStr];
+}
+
+-(int)total
+{
+    NSInteger total = self.gc+self.nc+self.bc;
+    
+    return total;
 }
 
 -(NSMutableAttributedString *)commentAttributedText
@@ -105,6 +117,36 @@
                       range:largeTextRange];
     }
     
+    return title;
+}
+
+-(NSMutableAttributedString *)pttIndexText
+{
+    NSInteger total = self.total;
+    NSString *totalText = [NSString stringWithFormat:@"%d",total];
+    UIColor *indexColor = ColorThemeYello;
+
+    if(total>99)
+    {
+        totalText =@"爆";
+        indexColor = ColorThemePink;
+    }
+    
+    NSString *text = [NSString stringWithFormat:@"PTT鄉民人氣 : %@", totalText];
+    
+    NSRange rangeTotal = [text rangeOfString:totalText];
+    NSRange rangeAll = [text rangeOfString:text];
+    
+    NSMutableAttributedString *title = [[NSMutableAttributedString alloc] initWithString:text];
+    [title addAttribute:(NSString *)NSFontAttributeName
+                  value:(id) IMFont(18)
+                  range:rangeAll];
+    [title addAttribute:(NSString *)NSForegroundColorAttributeName
+                  value:(id) [UIColor blackColor]
+                  range:rangeAll];
+    [title addAttribute:(NSString *)NSForegroundColorAttributeName
+                  value:(id)  indexColor
+                  range:rangeTotal];
     return title;
 }
 

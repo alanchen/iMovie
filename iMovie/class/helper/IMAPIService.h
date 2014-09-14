@@ -31,4 +31,12 @@
                                           success:(void (^)(AFHTTPRequestOperation *operation, IMMovieDetailModel *movie))success
                                           failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
 
+
+-(AFHTTPRequestOperation *)apiGetCurrentMoviesWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id movieList))success
+                                                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+-(AFHTTPRequestOperation *)apiGetFutureMoviesWithSuccess:(void (^)(AFHTTPRequestOperation *operation, id movieList))success
+                                                  failure:(void (^)(AFHTTPRequestOperation *operation, NSError *error))failure;
+
+
 @end

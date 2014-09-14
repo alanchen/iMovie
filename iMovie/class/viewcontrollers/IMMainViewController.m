@@ -8,30 +8,30 @@
 
 #import "IMMainViewController.h"
 #import "IMAPIService.h"
-#import "IMMainTableViewCell.h"
+#import "IMMainTableCell.h"
 #import "UIImageView+AFNetworking.h"
 #import "IMMovieDetailViewController.h"
 #import "UIViewController+Style.h"
+#import "IMErrorView.h"
 
 @interface IMMainViewController ()<UITableViewDataSource,UITableViewDelegate>
 
+@property (nonatomic,strong)UIScrollView *scrollView;
 @property (nonatomic,strong)UISegmentedControl *segControl;
 @property (nonatomic,strong)UITableView *tableView;
 @property (nonatomic,strong)UIActivityIndicatorView *spinner;
+@property (nonatomic,strong)IMErrorView *errorView;
 
-
-@property (nonatomic,strong)NSMutableArray *rankMovies;
-@property (nonatomic,strong)NSMutableArray *thisweekMovies;
-@property (nonatomic,strong)NSMutableArray *incomingMovies;
-@property (nonatomic,strong)NSMutableArray *intheaterMovies;
+@property (nonatomic,strong)NSMutableArray *tpRankMovies;
+@property (nonatomic,strong)NSMutableArray *currentMovie;
+@property (nonatomic,strong)NSMutableArray *futureMovies;
 @property (nonatomic,strong)NSMutableArray *tableDataSource;
 
-@property (nonatomic)IMMovieListType type;
+@property (nonatomic)IMMovieListSort sortType;
 
-@property (nonatomic,weak)AFHTTPRequestOperation *op1;
-@property (nonatomic,weak)AFHTTPRequestOperation *op2;
-@property (nonatomic,weak)AFHTTPRequestOperation *op3;
-@property (nonatomic,weak)AFHTTPRequestOperation *op4;
+@property (nonatomic,weak)AFHTTPRequestOperation *opTPRank;
+@property (nonatomic,weak)AFHTTPRequestOperation *opIncoming;
+@property (nonatomic,weak)AFHTTPRequestOperation *opDefault;
 
 @end
 
@@ -44,11 +44,16 @@
     [super viewDidLayoutSubviews];
     
     float padding = 10;
+    float segWidth = self.view.width*1.5;
+    float segHeight = 36;
     
-    self.segControl.width = self.view.width - 2*padding;
-    self.segControl.height = 36;
-    self.segControl.left = padding;
-    self.segControl.top = padding;
+    self.scrollView.width = self.view.width;
+    self.scrollView.contentSize = CGSizeMake(segWidth, segHeight);
+    self.scrollView.height = segHeight+2*padding;
+    
+    self.segControl.width = segWidth;
+    self.segControl.height = segHeight;
+    self.segControl.centerY = self.scrollView.height/2;
     
     self.tableView.width = self.view.width;
     self.tableView.height = self.view.height - self.segControl.bottom - padding;
@@ -56,7 +61,8 @@
     
     self.spinner.centerX = self.tableView.width/2;
     self.spinner.centerY = self.tableView.height/2;
-    
+
+    self.errorView.centerX = self.view.width/2;
 }
 
 - (void)viewDidLoad
@@ -67,115 +73,178 @@
     if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
         self.edgesForExtendedLayout = UIRectEdgeNone;
     
-    self.segControl = [[UISegmentedControl alloc] initWithItems:@[@"臺北票房",@"本週新片",@"即將上映",@"近期電影"]];
+    self.scrollView = [[UIScrollView alloc] initWithFrame:CGRectZero];
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    [self.scrollView setContentInset:UIEdgeInsetsMake(0,10,0,10)];
+    [self.view addSubview: self.scrollView];
+
+    self.segControl = [[UISegmentedControl alloc] initWithItems:@[@"人氣排序",@"好雷排序",@"負雷排序",@"臺北票房" ,@"IMDB",@"即將上映"]];
     self.segControl.segmentedControlStyle = UISegmentedControlStyleBar;
-    self.segControl.tintColor =ColorThemeBlue;
+    self.segControl.tintColor =ColorThemeGreen;
     self.segControl.selectedSegmentIndex = 0;
     [self.segControl addTarget:self action:@selector(segmentedControlClick) forControlEvents:UIControlEventValueChanged];
-    [self.view addSubview: self.segControl];
+    [self.scrollView addSubview: self.segControl];
     
     self.tableView = [[UITableView alloc] initWithFrame:CGRectZero];
     self.tableView.backgroundColor = ColorThemeGray;
+    self.tableView.delaysContentTouches = NO;
     [self.tableView setContentInset:UIEdgeInsetsMake(0, 0, 10, 0)];
     [self.tableView setSeparatorStyle:UITableViewCellSeparatorStyleNone];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    [self.tableView registerClass:[IMMainTableViewCell class] forCellReuseIdentifier:@"IMMainTableViewCell"];
+    [self.tableView registerClass:[IMMainTableCell class] forCellReuseIdentifier:@"IMMainTableViewCell"];
     
     self.spinner = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleWhiteLarge];
     [self.spinner startAnimating];
     self.spinner.hidesWhenStopped = YES;
     [self.tableView addSubview:self.spinner];
+    
+    self.errorView = [IMErrorView errorView];
+    [self.tableView addSubview:self.errorView];
+    [self.errorView.retryButton addTarget:self action:@selector(retryButtonClicked) forControlEvents:UIControlEventTouchUpInside];
+    self.errorView.top = 100;
 
     [self.view addSubview: self.tableView];
     
-    self.type = IMMovieListTypeTPRank;
+    self.sortType = IMMovieListSortHitto;
     
-    [self apiGetMoviewListByType:IMMovieListTypeTPRank];
-    [self apiGetMoviewListByType:IMMovieListTypeThisWeek];
-    [self apiGetMoviewListByType:IMMovieListTypeInTheater];
-    [self apiGetMoviewListByType:IMMovieListTypeIncoming];
+    [self apiGetCurrentMovieList];
+    [self apiGetFutureMovieList];
+    [self apiGetTPRankMovieList];
 
+    [self updateTableView];
 }
 
 #pragma  mark - Private
 
 -(void)updateTableView
 {
-    switch (self.type)
+    BOOL isLoading = NO;
+    
+    self.segControl.selectedSegmentIndex = self.sortType;
+    
+    switch (self.sortType)
     {
-        case IMMovieListTypeIncoming:
-            self.tableDataSource = self.incomingMovies;
+        case IMMovieListSortHitto:
+        {
+            self.tableDataSource = [self sortDataSource:self.currentMovie byType:self.sortType];
+            isLoading = self.opDefault.isExecuting;
             break;
-        case IMMovieListTypeInTheater:
-            self.tableDataSource  = self.intheaterMovies;
+        }
+        case IMMovieListSortGood:
+        {
+            self.tableDataSource = [self sortDataSource:self.currentMovie byType:self.sortType];
+            isLoading = self.opDefault.isExecuting;
             break;
-        case IMMovieListTypeThisWeek:
-            self.tableDataSource  = self.thisweekMovies;
+        }
+        case IMMovieListSortBad:
+        {
+            self.tableDataSource = [self sortDataSource:self.currentMovie byType:self.sortType];
+            isLoading = self.opDefault.isExecuting;
             break;
-        case IMMovieListTypeTPRank:
-            self.tableDataSource  = self.rankMovies;
+        }
+        case IMMovieListSortIMDB:
+        {
+            self.tableDataSource = [self sortDataSource:self.currentMovie byType:self.sortType];
+            isLoading = self.opDefault.isExecuting;
             break;
-            
+        }
+        case IMMovieListSortTPRank:
+        {
+            self.tableDataSource  = self.tpRankMovies;
+            isLoading = self.opTPRank.isExecuting;
+            break;
+        }
+        case IMMovieListSortIncoming:
+        {
+            self.tableDataSource  = self.futureMovies;
+            isLoading = self.opIncoming.isExecuting;
+            break;
+        }
         default:
             break;
     }
     
-    self.segControl.selectedSegmentIndex = self.type;
-    [self.tableView reloadData];
+    if(isLoading)
+    {
+        [self.spinner startAnimating];
+        self.errorView.hidden  = YES;
+        return;
+    }
+    else
+    {
+        [self.spinner stopAnimating];
+        self.errorView.hidden  = NO;
+    }
     
+    [self.tableView reloadData];
     [self.tableView setContentOffset:CGPointMake(0, 0) animated:NO];
     
     if( [self.tableDataSource count] ){
-        [self.spinner stopAnimating];
+        self.errorView.hidden  = YES;
     }
     else{
-        [self.spinner startAnimating];
+        self.errorView.hidden  = NO;
     }
 }
 
--(void)setSoure:(NSMutableArray *)array ToType:(IMMovieListType)type
+-(NSMutableArray *)sortDataSource:(NSMutableArray *)dataSource byType:(IMMovieListSort)type
 {
-    switch (type)
-    {
-        case IMMovieListTypeIncoming:
-            self.incomingMovies = array;
-            break;
-        case IMMovieListTypeInTheater:
-            self.intheaterMovies= array;
-            break;
-        case IMMovieListTypeThisWeek:
-            self.thisweekMovies= array;
-            break;
-        case IMMovieListTypeTPRank:
-            self.rankMovies= array;
-            break;
-            
-        default:
-            break;
-    }
+    NSString *key = @"gc";
+    
+    if(type == IMMovieListSortGood)
+        key = @"gc";
+    else if(type == IMMovieListSortBad)
+        key = @"bc";
+    else if(type == IMMovieListSortHitto)
+        key = @"total";
+    else if(type == IMMovieListSortIMDB)
+        key = @"imdb";
+    
+    NSSortDescriptor *sortDescriptor =
+    [NSSortDescriptor sortDescriptorWithKey:key
+                                  ascending:NO
+                                 comparator:^NSComparisonResult(id obj1, id obj2) {
+                                     
+                                     int value1 = [obj1 integerValue];
+                                     int value2 = [obj2 integerValue];
+                                     
+                                     if (value1 < value2) {
+                                         return NSOrderedAscending;
+                                     }
+                                     else if (value1 > value2){
+                                         return NSOrderedDescending;
+                                     }
+                                     else {
+                                         return NSOrderedSame;
+                                     }
+                                 }];
+    
+    return [[dataSource sortedArrayUsingDescriptors:@[sortDescriptor]] mutableCopy];
 }
 
 -(void)segmentedControlClick
 {
-    self.type = self.segControl.selectedSegmentIndex;
+    self.sortType = self.segControl.selectedSegmentIndex;
     [self updateTableView];
-    
-    if(self.type == IMMovieListTypeTPRank && self.rankMovies == nil && !self.op1.isExecuting)
+}
+
+-(void)retryButtonClicked
+{
+    if(self.sortType == IMMovieListSortHitto ||
+       self.sortType == IMMovieListSortGood ||
+       self.sortType == IMMovieListSortBad ||
+       self.sortType == IMMovieListSortIMDB )
     {
-        [self apiGetMoviewListByType:self.type];
+        [self apiGetCurrentMovieList];
     }
-    else if(self.type == IMMovieListTypeThisWeek && self.thisweekMovies == nil && !self.op2.isExecuting)
+    else if(self.sortType == IMMovieListSortTPRank)
     {
-        [self apiGetMoviewListByType:self.type];
+        [self apiGetFutureMovieList];
     }
-    else if(self.type == IMMovieListTypeIncoming && self.incomingMovies == nil && !self.op3.isExecuting)
+    else if(self.sortType == IMMovieListSortIncoming)
     {
-        [self apiGetMoviewListByType:self.type];
-    }
-    else if(self.type == IMMovieListTypeInTheater && self.intheaterMovies == nil && !self.op4.isExecuting)
-    {
-        [self apiGetMoviewListByType:self.type];
+        [self apiGetTPRankMovieList];
     }
 }
 
@@ -188,24 +257,29 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath;
 {
-    IMMainTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IMMainTableViewCell" forIndexPath:indexPath];
+    IMMainTableCell *cell = [tableView dequeueReusableCellWithIdentifier:@"IMMainTableViewCell" forIndexPath:indexPath];
     
     IMMovieModel *movieObj = [self.tableDataSource objectAtIndex:indexPath.row];
     
     cell.titleLabel.text = movieObj.ch_name;
-    [cell.coverImageView  setImageWithURL:[NSURL URLWithString:movieObj.thumbnail_small] placeholderImage:[[UIImage alloc] init]];
-    [cell.descriptionLabel setText:movieObj.description];
+    cell.engTitleLabel.text = movieObj.ori_name;
+
+    [cell.coverImageView  setImageWithURL:[NSURL URLWithString:movieObj.thumbnail_small] placeholderImage:[UIImage imageNamed:@"placeholder"]];
+    [cell.pttIndexLabel setAttributedText:movieObj.pttIndexText];
+    [cell.indexLabel setText:[NSString stringWithFormat:@"%d",indexPath.row+1]];
+    [cell.goodIndexLabel setText:[NSString stringWithFormat:@"%d",movieObj.gc]];
+    [cell.badIndexLabel setText:[NSString stringWithFormat:@"%d",movieObj.bc]];
     [cell.imdbLabel setText:movieObj.imdbText];
-    [cell.tomatoLabel setText:movieObj.tomatoText];
+    [cell.yahooLabel setText:movieObj.tomatoText];
     [cell.dateLabel setText:movieObj.dateText];
-    [cell.commentLabel setAttributedText:movieObj.commentAttributedText];
+    [cell setProgressWithGood:movieObj.gc bad:movieObj.bc];
     
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return 210;
+    return 215;
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -220,27 +294,50 @@
 
 #pragma  mark - API
 
--(void)apiGetMoviewListByType:(IMMovieListType)type
+-(void)apiGetCurrentMovieList
 {
-    AFHTTPRequestOperation *op=
-    [[IMAPIService sharedInstance] apiMovieListWithType:type
+    self.opDefault =
+    [[IMAPIService sharedInstance] apiGetCurrentMoviesWithSuccess:^(AFHTTPRequestOperation *operation, id movieList) {
+        self.currentMovie = movieList;
+        [self updateTableView];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(error.code != -999)
+            [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
+         [self updateTableView];
+    }];
+    
+    [self updateTableView];
+}
+
+-(void)apiGetFutureMovieList
+{
+     self.opIncoming =
+    [[IMAPIService sharedInstance] apiGetFutureMoviesWithSuccess:^(AFHTTPRequestOperation *operation, id movieList) {
+        self.futureMovies = [[movieList reversedArray] mutableCopy];
+        [self updateTableView];
+    } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
+        if(error.code != -999)
+            [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
+         [self updateTableView];
+    }];
+    
+    [self updateTableView];
+}
+
+-(void)apiGetTPRankMovieList
+{
+    self.opTPRank =
+    [[IMAPIService sharedInstance] apiMovieListWithType:IMMovieListTypeTPRank
                                                 success:^(AFHTTPRequestOperation *operation, id movieList) {
-                                                    [self setSoure:movieList ToType:type];
+                                                    self.tpRankMovies = movieList;
                                                     [self updateTableView];
-                                                    [SVProgressHUD dismiss];
                                                 } failure:^(AFHTTPRequestOperation *operation, NSError *error) {
                                                     if(error.code != -999)
                                                         [SVProgressHUD showErrorWithStatus:@"加載失敗，請檢查網路"];
+                                                     [self updateTableView];
                                                 }];
     
-    if(type == IMMovieListTypeTPRank)
-        self.op1 = op;
-    else if(type == IMMovieListTypeThisWeek)
-        self.op2 = op;
-    else if(type == IMMovieListTypeIncoming)
-        self.op3 = op;
-    else if(type == IMMovieListTypeInTheater)
-        self.op4 = op;
+    [self updateTableView];
 }
 
 @end

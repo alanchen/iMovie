@@ -24,6 +24,7 @@
 @property (nonatomic)int gc;
 @property (nonatomic)int bc;
 @property (nonatomic)int nc;
+@property (nonatomic)int total;
 
 @property (nonatomic)int imdb;
 @property (nonatomic)int tomato;
@@ -38,6 +39,7 @@
 -(NSString *)dateText;
 
 -(NSMutableAttributedString *)commentAttributedText;
+-(NSMutableAttributedString *)pttIndexText;
 
 
 @end
